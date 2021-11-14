@@ -72,7 +72,7 @@ const useFirebase = () => {
     // observer of changing of auth sate
     useEffect(() => {
         setLoading(true);
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {
@@ -80,6 +80,7 @@ const useFirebase = () => {
             }
             setLoading(false);
         });
+        return () => unsubscribe();
     }, []);
 
     return {
