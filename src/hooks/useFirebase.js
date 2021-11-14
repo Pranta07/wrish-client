@@ -4,6 +4,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
+    updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 
@@ -19,6 +20,8 @@ const useFirebase = () => {
             .then((Result) => {
                 // Signed in
                 const user = Result.user;
+                setUser({ name, email });
+                handleUpdate(name);
                 // ...
             })
             .catch((error) => {
@@ -51,6 +54,19 @@ const useFirebase = () => {
                 setError(error.message);
             })
             .finally(() => setLoading(false));
+    };
+
+    const handleUpdate = (name) => {
+        updateProfile(auth.currentUser, {
+            displayName: name,
+        })
+            .then(() => {
+                // Profile updated!
+                // ...
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     };
 
     // observer of changing of auth sate
