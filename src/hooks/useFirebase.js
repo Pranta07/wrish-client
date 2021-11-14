@@ -9,6 +9,9 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import firebaseAppInitialize from "../Pages/Login/Firebase/firebase.init";
+
+firebaseAppInitialize();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});

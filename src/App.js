@@ -7,36 +7,40 @@ import Watches from "./Pages/Watches/Watches";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
+import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
+import { AuthProvider } from "./contexts/AuthProvider";
 
 function App() {
     return (
         <div className="App">
-            <Router>
-                <Navigation></Navigation>
-                <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route path="/home">
-                        <Home />
-                    </Route>
-                    <Route path="/watches">
-                        <Watches />
-                    </Route>
-                    <Route path="/dashboard">
-                        <Dashboard></Dashboard>
-                    </Route>
-                    <Route path="/login">
-                        <Login></Login>
-                    </Route>
-                    <Route path="/register">
-                        <Register></Register>
-                    </Route>
-                    <Route path="/notfound">
-                        <NotFound />
-                    </Route>
-                </Switch>
-            </Router>
+            <AuthProvider>
+                <Router>
+                    <Navigation></Navigation>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/home">
+                            <Home />
+                        </Route>
+                        <Route path="/watches">
+                            <Watches />
+                        </Route>
+                        <PrivateRoute path="/dashboard">
+                            <Dashboard></Dashboard>
+                        </PrivateRoute>
+                        <Route path="/login">
+                            <Login></Login>
+                        </Route>
+                        <Route path="/register">
+                            <Register></Register>
+                        </Route>
+                        <Route path="/notfound">
+                            <NotFound />
+                        </Route>
+                    </Switch>
+                </Router>
+            </AuthProvider>
         </div>
     );
 }
