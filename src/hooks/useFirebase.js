@@ -5,6 +5,8 @@ import {
     signOut,
     onAuthStateChanged,
     updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 
@@ -36,6 +38,22 @@ const useFirebase = () => {
             .then((Result) => {
                 // Signed in
                 const user = Result.user;
+                // ...
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => setLoading(false));
+    };
+
+    const handleGoogleSignIn = () => {
+        setLoading(true);
+
+        const googleProvider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
                 // ...
             })
             .catch((error) => {
@@ -86,6 +104,7 @@ const useFirebase = () => {
     return {
         handleRegister,
         handleSignIn,
+        handleGoogleSignIn,
         handleSignOut,
         user,
         loading,
