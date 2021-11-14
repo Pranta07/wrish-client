@@ -29,7 +29,9 @@ const Navigation = () => {
                         alt="Example Alt"
                         src="https://i.ibb.co/7VrXhzF/149-1492017-download-watch-dogs-png-hd-watch-dogs-logo.png"
                     />
-                    <Typography variant="h5">WRISH</Typography>
+                    <Typography variant="h5" sx={{ ml: 1 }}>
+                        WRISH
+                    </Typography>
                     <Box sx={{ mx: 1 }}>
                         <Link to="/home" style={{ textDecoration: "none" }}>
                             <Button variant="contained">Home</Button>
