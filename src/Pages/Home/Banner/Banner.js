@@ -81,7 +81,9 @@ const Banner = () => {
                         >
                             {item.description}
                         </Box>
-                        <Button variant="contained">Shop Now</Button>
+                        <Button variant="contained" sx={{ px: 4, py: 1 }}>
+                            Shop Now
+                        </Button>
                     </Typography>
                 </Paper>
             ))}

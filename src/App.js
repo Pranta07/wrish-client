@@ -35,7 +35,7 @@ function App() {
                         <Route path="/register">
                             <Register></Register>
                         </Route>
-                        <Route path="/notfound">
+                        <Route path="*">
                             <NotFound />
                         </Route>
                     </Switch>
