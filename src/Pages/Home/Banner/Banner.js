@@ -4,7 +4,7 @@ import { Paper, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 const Banner = () => {
-    var items = [
+    const items = [
         {
             id: 1,
             title: "The Classics",
