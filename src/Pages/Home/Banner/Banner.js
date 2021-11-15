@@ -30,7 +30,7 @@ const Banner = () => {
             bgImg: "https://i.ibb.co/FB21gnX/bradley-ziffer-e-AOl9-QREIY0-unsplash.jpg",
         },
     ];
-    const style = {};
+
     return (
         <Carousel>
             {items.map((item) => (
@@ -52,7 +52,7 @@ const Banner = () => {
                         <Box
                             sx={{
                                 letterSpacing: 2,
-                                m: 1,
+                                lineHeight: "normal",
                                 fontSize: "h6.fontSize",
                                 color: "white",
                             }}
@@ -61,9 +61,9 @@ const Banner = () => {
                         </Box>
                         <Box
                             sx={{
+                                lineHeight: "normal",
                                 fontWeight: "bold",
                                 fontFamily: "Monospace",
-                                m: 1,
                                 fontSize: "h2.fontSize",
                                 color: "white",
                             }}
@@ -72,14 +72,16 @@ const Banner = () => {
                         </Box>
                         <Box
                             sx={{
+                                lineHeight: "normal",
                                 letterSpacing: 2,
-                                m: 1,
                                 fontSize: "h5.fontSize",
                                 color: "white",
+                                mb: 3,
                             }}
                         >
                             {item.description}
                         </Box>
+                        <Button variant="contained">Shop Now</Button>
                     </Typography>
                 </Paper>
             ))}
