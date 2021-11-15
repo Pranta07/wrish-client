@@ -9,6 +9,7 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthProvider";
+import Footer from "./Pages/Shared/Footer/Footer";
 
 function App() {
     return (
@@ -39,6 +40,7 @@ function App() {
                             <NotFound />
                         </Route>
                     </Switch>
+                    <Footer></Footer>
                 </Router>
             </AuthProvider>
         </div>

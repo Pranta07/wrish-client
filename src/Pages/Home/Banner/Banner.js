@@ -35,6 +35,7 @@ const Banner = () => {
         <Carousel>
             {items.map((item) => (
                 <Paper
+                    key={item.id}
                     style={{
                         backgroundImage: `url(${item.bgImg})`,
                         backgroundRepeat: "no-repeat",
@@ -64,7 +65,7 @@ const Banner = () => {
                                 lineHeight: "normal",
                                 fontWeight: "bold",
                                 fontFamily: "Monospace",
-                                fontSize: "h2.fontSize",
+                                fontSize: "h3.fontSize",
                                 color: "white",
                             }}
                         >
