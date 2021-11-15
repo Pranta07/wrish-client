@@ -45,6 +45,16 @@ const Navigation = () => {
                             <Button variant="contained">Watches</Button>
                         </Link>
                     </Box>
+                    {user.email && (
+                        <Box sx={{ mr: 1 }}>
+                            <Link
+                                to="/dashboard"
+                                style={{ textDecoration: "none" }}
+                            >
+                                <Button variant="contained">Dashboard</Button>
+                            </Link>
+                        </Box>
+                    )}
                     {!user.email ? (
                         <Link
                             to="login"

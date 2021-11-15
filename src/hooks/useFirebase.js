@@ -29,7 +29,13 @@ const useFirebase = () => {
                 setUser({ displayName: name, email: email });
                 handleUpdate(name);
                 setError("");
-                Swal.fire("Good job!", "Registered Successfully!", "success");
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "Registered Successfully!",
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
                 history.push("/");
             })
             .catch((error) => {
@@ -45,7 +51,13 @@ const useFirebase = () => {
             .then((Result) => {
                 // Signed in
                 setError("");
-                Swal.fire("Good job!", "Login Successfully!", "success");
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "Successfully Logged in!",
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
                 history.push(location?.state?.from || "/");
             })
             .catch((error) => {

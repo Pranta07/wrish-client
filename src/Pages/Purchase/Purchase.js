@@ -20,6 +20,7 @@ import Box from "@mui/material/Box";
 import useAuth from "../../hooks/useAuth";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Description, MailOutline, Phone } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
 const Purchase = () => {
     const [product, setProduct] = useState();
@@ -36,8 +37,20 @@ const Purchase = () => {
             .then((data) => setProduct(data));
     }, [id]);
 
-    const handleSubmit = (e) => {
+    const handlePlaceOrder = (e) => {
+        // Swal.fire("Good job!", "You clicked the button!", "success");
         e.preventDefault();
+        Swal.fire({
+            title: product.name,
+            imageUrl: product.img,
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: "Custom image",
+            text: "Your Order Placed Successfully",
+            timer: 2000,
+            showConfirmButton: false,
+        });
+        console.log(orderDetails);
     };
     const handleChange = (e) => {
         const newDetails = { ...orderDetails };
@@ -82,34 +95,33 @@ const Purchase = () => {
                     </CardActionArea>
                 </Box>
                 <Box>
-                    <Box>
-                        <CardContent
-                            sx={{
-                                flex: "1 0 auto",
-                                padding: "20px",
-                                justifyContent: "left",
-                            }}
+                    <CardContent
+                        sx={{
+                            flex: "1 0 auto",
+                            padding: "20px",
+                            justifyContent: "left",
+                        }}
+                    >
+                        <Rating
+                            name="read-only"
+                            value={4}
+                            readOnly
+                            size="small"
+                        />
+                        <Typography component="div" variant="h5">
+                            Price: ${product?.price}
+                        </Typography>
+                        <hr />
+                        <Typography
+                            variant="subtitle1"
+                            component="div"
+                            color="text.secondary"
                         >
-                            <Rating
-                                name="read-only"
-                                value={4}
-                                readOnly
-                                size="small"
-                            />
-                            <Typography component="div" variant="h5">
-                                Price: ${product?.price}
-                            </Typography>
-                            <hr />
-                            <Typography
-                                variant="subtitle1"
-                                component="div"
-                                color="text.secondary"
-                            >
-                                {product?.desc.slice(0, 80)}
-                            </Typography>
-                        </CardContent>
-                    </Box>
-                    <form onSubmit={handleSubmit}>
+                            {product?.desc.slice(0, 80)}
+                        </Typography>
+                    </CardContent>
+
+                    <form onSubmit={handlePlaceOrder}>
                         <TextField
                             onBlur={handleChange}
                             disabled
@@ -170,10 +182,11 @@ const Purchase = () => {
                             }}
                             sx={{ width: "75%", my: 1 }}
                         />
+                        <br />
+                        <Button type="submit" variant="contained">
+                            Place Order
+                        </Button>
                     </form>
-                    <Button type="submit" variant="contained">
-                        Place Order
-                    </Button>
                 </Box>
             </Card>
         </Container>
