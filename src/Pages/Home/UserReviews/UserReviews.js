@@ -15,13 +15,15 @@ const UserReviews = () => {
         flexGrow: 1,
         height: "400",
     };
+    //fetching all reviews
     useEffect(() => {
         fetch("http://localhost:5000/reviews")
             .then((res) => res.json())
             .then((data) => setReviews(data));
     }, []);
+
     return (
-        <Container>
+        <Container sx={{ mb: 2 }}>
             <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
                 REVIEWS
             </Typography>

@@ -13,6 +13,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Link } from "react-router-dom";
 
 const Watches = () => {
     const [watches, setWatches] = useState([]);
@@ -99,9 +100,14 @@ const Watches = () => {
                                         justifyContent: "space-between",
                                     }}
                                 >
-                                    <Button size="small" color="primary">
-                                        Buy Now
-                                    </Button>
+                                    <Link
+                                        to={`purchase/${item._id}`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <Button size="small" color="primary">
+                                            Buy Now
+                                        </Button>
+                                    </Link>
                                     <Button
                                         variant="text"
                                         size="small"

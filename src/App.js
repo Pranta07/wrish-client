@@ -10,6 +10,7 @@ import Register from "./Pages/Login/Register/Register";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthProvider";
 import Footer from "./Pages/Shared/Footer/Footer";
+import Purchase from "./Pages/Purchase/Purchase";
 
 function App() {
     return (
@@ -26,6 +27,9 @@ function App() {
                         </Route>
                         <Route path="/watches">
                             <Watches />
+                        </Route>
+                        <Route path="/purchase/:id">
+                            <Purchase />
                         </Route>
                         <PrivateRoute path="/dashboard">
                             <Dashboard></Dashboard>

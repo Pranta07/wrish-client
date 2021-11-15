@@ -15,6 +15,7 @@ const MidBanner = () => {
         alignItems: "center",
         justifyContent: "center",
     };
+
     return (
         <Box sx={{ my: 3 }}>
             <Paper style={style}>
