@@ -9,6 +9,7 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import firebaseAppInitialize from "../Pages/Login/Firebase/firebase.init";
 
 firebaseAppInitialize();
@@ -19,17 +20,17 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true);
 
     const auth = getAuth();
-    const handleRegister = (name, email, password, location, history) => {
+    const handleRegister = (name, email, password, history) => {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((Result) => {
                 // Signed in
-                const user = Result.user;
-                setUser({ name, email });
+                // const user = Result.user;
+                setUser({ displayName: name, email: email });
                 handleUpdate(name);
                 setError("");
-                history.replace(location?.state?.from);
-                // ...
+                Swal.fire("Good job!", "Registered Successfully!", "success");
+                history.push("/");
             })
             .catch((error) => {
                 setError(error.message);
@@ -43,10 +44,9 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((Result) => {
                 // Signed in
-                // console.log(Result.user);
                 setError("");
-                console.log(location, history);
-                history.push(location?.state?.from);
+                Swal.fire("Good job!", "Login Successfully!", "success");
+                history.push(location?.state?.from || "/");
             })
             .catch((error) => {
                 setError(error.message);
@@ -54,16 +54,16 @@ const useFirebase = () => {
             .finally(() => setLoading(false));
     };
 
-    const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = (location, history) => {
         setLoading(true);
 
         const googleProvider = new GoogleAuthProvider();
 
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                const user = result.user;
+                // const user = result.user;
                 setError("");
-                // ...
+                history.push(location?.state?.from);
             })
             .catch((error) => {
                 setError(error.message);
@@ -90,7 +90,6 @@ const useFirebase = () => {
         })
             .then(() => {
                 // Profile updated!
-                // ...
                 setError("");
             })
             .catch((error) => {

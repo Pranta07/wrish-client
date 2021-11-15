@@ -113,7 +113,7 @@ const Purchase = () => {
                         <TextField
                             onBlur={handleChange}
                             disabled
-                            defaultValue={user.name}
+                            defaultValue={user.displayName}
                             label="Name"
                             name="name"
                             variant="standard"

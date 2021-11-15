@@ -27,7 +27,6 @@ const Register = () => {
     const [show, setShow] = useState(false);
     const { handleRegister, error, setError } = useAuth();
 
-    const { location } = useLocation();
     const history = useHistory();
 
     const handleRegisterSubmit = (e) => {
@@ -36,7 +35,6 @@ const Register = () => {
             registerInfo.name,
             registerInfo.email,
             registerInfo.password,
-            location,
             history
         );
     };

@@ -15,7 +15,7 @@ const UserReviews = () => {
         flexGrow: 1,
         height: "400",
     };
-    //fetching all reviews
+    //fetching request for all reviews
     useEffect(() => {
         fetch("http://localhost:5000/reviews")
             .then((res) => res.json())
