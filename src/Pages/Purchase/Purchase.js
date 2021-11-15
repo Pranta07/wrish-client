@@ -36,12 +36,15 @@ const Purchase = () => {
             .then((data) => setProduct(data));
     }, [id]);
 
-    const handleSubmit = () => {};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     const handleChange = (e) => {
         const newDetails = { ...orderDetails };
         const name = e.target.name;
         newDetails[name] = e.target.value;
         setOrderDetials(newDetails);
+        // console.log(name, newDetails);
     };
 
     return (
@@ -126,7 +129,7 @@ const Purchase = () => {
                         <TextField
                             disabled
                             onBlur={handleChange}
-                            defaultValue={user.name}
+                            defaultValue={user.email}
                             label="Email"
                             name="email"
                             variant="standard"
