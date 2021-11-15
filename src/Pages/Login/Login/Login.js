@@ -23,16 +23,15 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
-    const [open, setOpen] = useState(false);
     const [show, setShow] = useState(false);
     const { handleSignIn, error, setError } = useAuth();
 
-    const { location } = useLocation();
+    const location = useLocation();
     const history = useHistory();
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        handleSignIn(loginInfo.name, loginInfo.email, location, history);
+        handleSignIn(loginInfo.email, loginInfo.password, location, history);
     };
 
     const handleChange = (e) => {
@@ -40,7 +39,7 @@ const Login = () => {
         const name = e.target.name;
         newInfo[name] = e.target.value;
         setLoginInfo(newInfo);
-        // console.log(name, newDetails);
+        console.log(name, newInfo);
     };
 
     const handleClickShowPassword = () => {
@@ -51,7 +50,7 @@ const Login = () => {
         event.preventDefault();
     };
 
-    const handleClose = (event, reason) => {
+    const handleClose = () => {
         setError("");
     };
 
@@ -89,6 +88,7 @@ const Login = () => {
                     <form onSubmit={handleLoginSubmit}>
                         <h2>Sign in</h2>
                         <TextField
+                            required
                             onBlur={handleChange}
                             label="Email"
                             name="email"
@@ -105,6 +105,7 @@ const Login = () => {
                         <FormControl
                             sx={{ width: "60%", my: 1 }}
                             variant="standard"
+                            required
                         >
                             <InputLabel htmlFor="standard-adornment-password">
                                 Password
@@ -129,9 +130,9 @@ const Login = () => {
                                             }
                                         >
                                             {show ? (
-                                                <VisibilityOff />
-                                            ) : (
                                                 <Visibility />
+                                            ) : (
+                                                <VisibilityOff />
                                             )}
                                         </IconButton>
                                     </InputAdornment>

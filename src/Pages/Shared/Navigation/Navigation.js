@@ -8,9 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import useAuth from "../../../hooks/useAuth";
 
 const Navigation = () => {
+    const { user, handleSignOut } = useAuth();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -44,17 +45,41 @@ const Navigation = () => {
                             <Button variant="contained">Watches</Button>
                         </Link>
                     </Box>
-                    <Link
-                        to="login"
-                        style={{
-                            textDecoration: "none",
-                            marginLeft: "auto",
-                            marginRight: "5px",
-                        }}
-                    >
-                        <Button variant="contained">Login</Button>
-                    </Link>
-                    <AccountCircle />
+                    {!user.email ? (
+                        <Link
+                            to="login"
+                            style={{
+                                textDecoration: "none",
+                                marginLeft: "auto",
+                                marginRight: "5px",
+                            }}
+                        >
+                            <Button variant="contained">Login</Button>
+                        </Link>
+                    ) : (
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                            style={{
+                                marginLeft: "auto",
+                                marginRight: "5px",
+                            }}
+                        >
+                            <Typography sx={{ typography: "body2" }}>
+                                {user.displayName}
+                            </Typography>
+                            <Avatar
+                                alt="Cindy Baker"
+                                src={user.photoURL}
+                                sx={{ mx: 1 }}
+                            />
+                            <Button onClick={handleSignOut} variant="contained">
+                                Logout
+                            </Button>
+                        </Box>
+                    )}
                 </Toolbar>
             </AppBar>
         </Box>
