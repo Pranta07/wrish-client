@@ -74,7 +74,7 @@ const MyOrders = () => {
             )}
             {myOrders.length === 0 && !loading ? (
                 <Typography variant="h3" sx={{ my: 2 }}>
-                    Currently You Have Orders To Display!
+                    Currently You Have No Orders To Display!
                 </Typography>
             ) : (
                 <TableContainer component={Paper}>
