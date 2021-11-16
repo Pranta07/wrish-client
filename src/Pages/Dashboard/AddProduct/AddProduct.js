@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useRef, useState } from "react";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
     const [product, setProduct] = useState({});
@@ -15,8 +16,24 @@ const AddProduct = () => {
 
     const handleAddProduct = (e) => {
         e.preventDefault();
-        console.log(product);
-        setProduct(product);
+        // console.log(product);
+        fetch("http://localhost:5000/watches", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(product),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.insertedId) {
+                    Swal.fire(
+                        "Success",
+                        "Product Added Successfullly!",
+                        "success"
+                    );
+                }
+            });
         formRef.current.reset();
     };
 
@@ -24,6 +41,7 @@ const AddProduct = () => {
         const name = e.target.name;
         const newProduct = { ...product };
         newProduct[name] = e.target.value;
+        setProduct(newProduct);
     };
     return (
         <Box
@@ -65,12 +83,12 @@ const AddProduct = () => {
                 <TextField
                     required
                     onBlur={handleChange}
-                    name="imgUrl"
+                    name="img"
                     label="Img URL"
                     sx={{ width: "70%", my: 1 }}
                 />
                 <br />
-                <Button type="submit" variant="contained" sx={{ my: 2 }}>
+                <Button type="submit" variant="contained" sx={{ my: 2, px: 4 }}>
                     Add Product
                 </Button>
             </form>
