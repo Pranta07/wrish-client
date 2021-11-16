@@ -1,4 +1,13 @@
 import * as React from "react";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch,
+    useHistory,
+} from "react-router-dom";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -6,7 +15,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -17,13 +25,18 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { Payment, Reviews, Shop, Watch } from "@mui/icons-material";
 import MyOrders from "../MyOrders/MyOrders";
-import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import RateUs from "../RateUs/RateUs";
+import Pay from "../Pay/Pay";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { handleSignOut } = useAuth();
+    const history = useHistory();
+    let { path, url } = useRouteMatch();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -45,27 +58,44 @@ function Dashboard(props) {
                         <ListItemText primary="Watches" />
                     </ListItem>
                 </Link>
-                <ListItem button>
-                    <ListItemIcon>
-                        <Payment></Payment>
-                    </ListItemIcon>
-                    <ListItemText primary="Pay" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon>
-                        <Shop></Shop>
-                    </ListItemIcon>
-                    <ListItemText primary="My Orders" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon>
-                        <Reviews></Reviews>
-                    </ListItemIcon>
-                    <ListItemText primary="Review" />
-                </ListItem>
+                <Link
+                    to={`${url}/pay`}
+                    style={{ textDecoration: "none", color: "blueviolet" }}
+                >
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Payment></Payment>
+                        </ListItemIcon>
+                        <ListItemText primary="Pay" />
+                    </ListItem>
+                </Link>
+                <Link
+                    to={`${url}/myOrders`}
+                    style={{ textDecoration: "none", color: "blueviolet" }}
+                >
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Shop></Shop>
+                        </ListItemIcon>
+                        <ListItemText primary="My Orders" />
+                    </ListItem>
+                </Link>
+                <Link
+                    to={`${url}/reviews`}
+                    style={{ textDecoration: "none", color: "blueviolet" }}
+                >
+                    <ListItem button>
+                        <ListItemIcon>
+                            <Reviews></Reviews>
+                        </ListItemIcon>
+                        <ListItemText primary="Review" />
+                    </ListItem>
+                </Link>
             </List>
             <Divider />
-            <Button variant="text">Logout</Button>
+            <Button onClick={() => handleSignOut(history)} variant="text">
+                Logout
+            </Button>
         </div>
     );
 
@@ -143,7 +173,21 @@ function Dashboard(props) {
                 }}
             >
                 <Toolbar />
-                <MyOrders></MyOrders>
+                {/* <MyOrders></MyOrders> */}
+                <Switch>
+                    <Route exact path={path}>
+                        <MyOrders></MyOrders>
+                    </Route>
+                    <Route path={`${path}/pay`}>
+                        <Pay></Pay>
+                    </Route>
+                    <Route path={`${path}/myOrders`}>
+                        <MyOrders></MyOrders>
+                    </Route>
+                    <Route path={`${path}/reviews`}>
+                        <RateUs></RateUs>
+                    </Route>
+                </Switch>
             </Box>
         </Box>
     );

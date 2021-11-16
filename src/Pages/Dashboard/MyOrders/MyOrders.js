@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { IconButton, Tooltip, Typography } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import { Delete } from "@mui/icons-material";
 import Swal from "sweetalert2";
@@ -111,7 +111,11 @@ const MyOrders = () => {
                                         onClick={() => handleDelete(order._id)}
                                         align="right"
                                     >
-                                        <Delete></Delete>
+                                        <Tooltip title="Delete">
+                                            <IconButton>
+                                                <Delete></Delete>
+                                            </IconButton>
+                                        </Tooltip>
                                     </TableCell>
                                 </TableRow>
                             ))}

@@ -26,9 +26,6 @@ const useFirebase = () => {
             .then((Result) => {
                 // Signed in
                 // const user = Result.user;
-                setUser({ displayName: name, email: email });
-                handleUpdate(name);
-                setError("");
                 Swal.fire({
                     icon: "success",
                     title: "Success!",
@@ -36,6 +33,10 @@ const useFirebase = () => {
                     showConfirmButton: false,
                     timer: 2000,
                 });
+                setUser({ displayName: name, email: email });
+                saveUser(name, email); //save user info to db
+                handleUpdate(name);
+                setError("");
                 history.push("/");
             })
             .catch((error) => {
@@ -83,12 +84,13 @@ const useFirebase = () => {
             .finally(() => setLoading(false));
     };
 
-    const handleSignOut = () => {
+    const handleSignOut = (history) => {
         setLoading(true);
         signOut(auth)
             .then(() => {
                 // Sign-out successful.
                 setError("");
+                history.push("/");
             })
             .catch((error) => {
                 setError(error.message);
@@ -107,6 +109,17 @@ const useFirebase = () => {
             .catch((error) => {
                 setError(error.message);
             });
+    };
+
+    const saveUser = (name, email) => {
+        const userData = { name, email };
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userData),
+        });
     };
 
     // observer of changing of auth sate

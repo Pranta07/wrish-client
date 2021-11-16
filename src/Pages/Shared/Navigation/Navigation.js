@@ -9,9 +9,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-
+import { useHistory } from "react-router-dom";
 const Navigation = () => {
     const { user, handleSignOut } = useAuth();
+    const history = useHistory();
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -85,7 +87,10 @@ const Navigation = () => {
                                 src={user.photoURL}
                                 sx={{ mx: 1 }}
                             />
-                            <Button onClick={handleSignOut} variant="contained">
+                            <Button
+                                onClick={() => handleSignOut(history)}
+                                variant="contained"
+                            >
                                 Logout
                             </Button>
                         </Box>
