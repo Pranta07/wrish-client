@@ -69,7 +69,9 @@ const ManageProducts = () => {
 
     return (
         <div>
-            <h1>Manage Products</h1>
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>
+                Manage Products
+            </Typography>
             <Divider sx={{ my: 1 }}></Divider>
             {isLoading ? (
                 <Box sx={{ width: "100%" }}>

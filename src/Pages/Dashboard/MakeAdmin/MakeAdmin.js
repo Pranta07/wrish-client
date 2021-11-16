@@ -1,6 +1,6 @@
 import { sendEmailVerification } from "@firebase/auth";
 import { MailOutline } from "@mui/icons-material";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField, Typography } from "@mui/material";
 import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -39,7 +39,9 @@ const MakeAdmin = () => {
 
     return (
         <div>
-            <h1>Make an Admin</h1>
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>
+                Make an Admin
+            </Typography>
             <form onSubmit={handleSubmit} ref={formRef}>
                 <TextField
                     onChange={handleChange}

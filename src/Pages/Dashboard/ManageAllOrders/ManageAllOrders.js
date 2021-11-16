@@ -78,8 +78,8 @@ const ManageAllOrders = () => {
 
     return (
         <Box>
-            <Typography variant="h3" sx={{ my: 2 }}>
-                Manage all Orders
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>
+                Manage Orders
             </Typography>
             <hr />
             {loading && (
