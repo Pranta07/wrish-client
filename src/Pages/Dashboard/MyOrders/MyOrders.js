@@ -7,14 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { IconButton, Tooltip, Typography } from "@mui/material";
+import { IconButton, LinearProgress, Tooltip, Typography } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
-import { Delete } from "@mui/icons-material";
+import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
 import Swal from "sweetalert2";
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [isDelete, steIsDelete] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { user } = useAuth();
 
     const handleDelete = (id) => {
@@ -50,12 +51,14 @@ const MyOrders = () => {
     };
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);
                 setMyOrders(data);
-            });
+            })
+            .finally(() => setLoading(false));
     }, [user.email, isDelete]);
 
     return (
@@ -64,7 +67,12 @@ const MyOrders = () => {
                 My Orders
             </Typography>
             <hr />
-            {myOrders.length === 0 ? (
+            {loading && (
+                <Box sx={{ width: "100%" }}>
+                    <LinearProgress />
+                </Box>
+            )}
+            {myOrders.length === 0 && !loading ? (
                 <Typography variant="h3" sx={{ my: 2 }}>
                     Currently You Have Orders To Display!
                 </Typography>
@@ -106,6 +114,17 @@ const MyOrders = () => {
                                     </TableCell>
                                     <TableCell align="right">
                                         {order?.status ? "Shipped" : "Pending"}
+                                        {!order?.status ? (
+                                            <IconButton>
+                                                <Pending></Pending>
+                                            </IconButton>
+                                        ) : (
+                                            <Tooltip title="Shipped">
+                                                <IconButton>
+                                                    <LocalShippingRounded></LocalShippingRounded>
+                                                </IconButton>
+                                            </Tooltip>
+                                        )}
                                     </TableCell>
                                     <TableCell
                                         onClick={() => handleDelete(order._id)}
