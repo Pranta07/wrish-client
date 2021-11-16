@@ -48,144 +48,149 @@ function Dashboard(props) {
     const history = useHistory();
     let { path, url } = useRouteMatch();
     const [admin, setAdmin] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
     React.useEffect(() => {
+        setLoading(true);
         fetch(`http://localhost:5000/users/${user.email}`)
             .then((res) => res.json())
             .then((user) => {
                 if (user.role === "admin") setAdmin(true);
-            });
+            })
+            .finally(() => setLoading(false));
     }, [user.email]);
 
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
-            <List>
-                <Link
-                    to="/watches"
-                    style={{
-                        textDecoration: "none",
-                        color: "blueviolet",
-                    }}
-                >
-                    <ListItem button>
-                        <ListItemIcon>
-                            <Watch></Watch>
-                        </ListItemIcon>
-                        <ListItemText primary="Watches" />
-                    </ListItem>
-                </Link>
-                {!admin ? (
-                    <Box>
-                        <Link
-                            to={`${url}/pay`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Payment></Payment>
-                                </ListItemIcon>
-                                <ListItemText primary="Pay" />
-                            </ListItem>
-                        </Link>
-                        <Link
-                            to={`${url}/myOrders`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Shop></Shop>
-                                </ListItemIcon>
-                                <ListItemText primary="My Orders" />
-                            </ListItem>
-                        </Link>
-                        <Link
-                            to={`${url}/reviews`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Reviews></Reviews>
-                                </ListItemIcon>
-                                <ListItemText primary="Review" />
-                            </ListItem>
-                        </Link>
-                    </Box>
-                ) : (
-                    <Box>
-                        <Link
-                            to={`${url}/makeAdmin`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <AdminPanelSettings></AdminPanelSettings>
-                                </ListItemIcon>
-                                <ListItemText primary="Make Admin" />
-                            </ListItem>
-                        </Link>
-                        <Link
-                            to={`${url}/addProduct`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Add></Add>
-                                </ListItemIcon>
-                                <ListItemText primary="Add Item" />
-                            </ListItem>
-                        </Link>
-                        <Link
-                            to={`${url}/manageProducts`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Watch></Watch>
-                                </ListItemIcon>
-                                <ListItemText primary="Manage Products" />
-                            </ListItem>
-                        </Link>
-                        <Link
-                            to={`${url}/manageOrders`}
-                            style={{
-                                textDecoration: "none",
-                                color: "blueviolet",
-                            }}
-                        >
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Update></Update>
-                                </ListItemIcon>
-                                <ListItemText primary="Manage Orders" />
-                            </ListItem>
-                        </Link>
-                    </Box>
-                )}
-            </List>
+            {!loading && (
+                <List>
+                    <Link
+                        to="/watches"
+                        style={{
+                            textDecoration: "none",
+                            color: "blueviolet",
+                        }}
+                    >
+                        <ListItem button>
+                            <ListItemIcon>
+                                <Watch></Watch>
+                            </ListItemIcon>
+                            <ListItemText primary="Watches" />
+                        </ListItem>
+                    </Link>
+                    {!admin ? (
+                        <Box>
+                            <Link
+                                to={`${url}/pay`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Payment></Payment>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Pay" />
+                                </ListItem>
+                            </Link>
+                            <Link
+                                to={`${url}/myOrders`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Shop></Shop>
+                                    </ListItemIcon>
+                                    <ListItemText primary="My Orders" />
+                                </ListItem>
+                            </Link>
+                            <Link
+                                to={`${url}/reviews`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Reviews></Reviews>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Review" />
+                                </ListItem>
+                            </Link>
+                        </Box>
+                    ) : (
+                        <Box>
+                            <Link
+                                to={`${url}/makeAdmin`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <AdminPanelSettings></AdminPanelSettings>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Make Admin" />
+                                </ListItem>
+                            </Link>
+                            <Link
+                                to={`${url}/addProduct`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Add></Add>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Add Item" />
+                                </ListItem>
+                            </Link>
+                            <Link
+                                to={`${url}/manageProducts`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Watch></Watch>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Manage Products" />
+                                </ListItem>
+                            </Link>
+                            <Link
+                                to={`${url}/manageOrders`}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "blueviolet",
+                                }}
+                            >
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <Update></Update>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Manage Orders" />
+                                </ListItem>
+                            </Link>
+                        </Box>
+                    )}
+                </List>
+            )}
             <Divider />
             <Button onClick={() => handleSignOut(history)} variant="text">
                 Logout
@@ -280,9 +285,9 @@ function Dashboard(props) {
                 <Toolbar />
                 {/* <MyOrders></MyOrders> */}
                 <Switch>
-                    {!admin && (
+                    {!loading && (
                         <Route exact path={path}>
-                            <MyOrders></MyOrders>
+                            {!admin ? <MyOrders></MyOrders> : <MakeAdmin />}
                         </Route>
                     )}
                     <Route path={`${path}/pay`}>
