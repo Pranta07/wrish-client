@@ -1,6 +1,5 @@
-import { Button, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import Footer from "../../Shared/Footer/Footer";
 import Banner from "../Banner/Banner";
 import MidBanner from "../MidBanner/MidBanner";
 import TopProducts from "../TopProducts/TopProducts";

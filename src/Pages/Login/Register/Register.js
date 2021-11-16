@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import useAuth from "../../../hooks/useAuth";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import {
     Alert,
     Button,

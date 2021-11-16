@@ -14,7 +14,7 @@ import {
     Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box from "@mui/material/Box";
 import useAuth from "../../hooks/useAuth";
@@ -27,9 +27,10 @@ const Purchase = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const [orderDetails, setOrderDetials] = useState({
-        name: user.name,
+        name: user.displayName,
         email: user.email,
     });
+    const history = useHistory();
 
     useEffect(() => {
         fetch(`http://localhost:5000/purchase/${id}`)
@@ -38,19 +39,36 @@ const Purchase = () => {
     }, [id]);
 
     const handlePlaceOrder = (e) => {
-        // Swal.fire("Good job!", "You clicked the button!", "success");
         e.preventDefault();
-        Swal.fire({
-            title: product.name,
-            imageUrl: product.img,
-            imageWidth: 300,
-            imageHeight: 200,
-            imageAlt: "Custom image",
-            text: "Your Order Placed Successfully",
-            timer: 2000,
-            showConfirmButton: false,
-        });
-        console.log(orderDetails);
+        // console.log(orderDetails);
+        orderDetails.productName = product.name;
+        orderDetails.productPrice = product.price;
+        orderDetails.productImg = product.img;
+
+        //send orderdetails data to server
+        fetch("http://localhost:5000/orders", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(orderDetails),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.insertedId) {
+                    Swal.fire({
+                        title: product.name,
+                        imageUrl: product.img,
+                        imageWidth: 300,
+                        imageHeight: 200,
+                        imageAlt: "Custom image",
+                        text: "Your Order Placed Successfully",
+                        timer: 2000,
+                        showConfirmButton: false,
+                    });
+                }
+            })
+            .finally(() => history.push("/watches"));
     };
     const handleChange = (e) => {
         const newDetails = { ...orderDetails };
@@ -81,14 +99,11 @@ const Purchase = () => {
                         />
                         <ImageListItemBar
                             title={product?.name.toUpperCase()}
-                            position="top"
+                            position="bottom"
                             actionIcon={
-                                <IconButton
-                                    sx={{ color: "white" }}
-                                    aria-label={`star ${product?.name}`}
-                                >
-                                    <FavoriteIcon />
-                                </IconButton>
+                                <Box sx={{ marginLeft: "10px" }}>
+                                    <FavoriteIcon sx={{ color: "white" }} />
+                                </Box>
                             }
                             actionPosition="left"
                         />
