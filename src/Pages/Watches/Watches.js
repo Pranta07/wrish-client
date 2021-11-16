@@ -35,8 +35,11 @@ const Watches = () => {
         <Box>
             <Navigation></Navigation>
             <Container sx={{ mb: 3 }}>
-                <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
-                    Explore All Watch Of Your Choice
+                <Typography
+                    variant="h4"
+                    sx={{ fontWeight: "bold", fontFamily: "Monospace", my: 2 }}
+                >
+                    Exclusive Collections
                 </Typography>
                 <Typography variant="p" sx={{ my: 2 }}>
                     BE THE FIRST TO GET LIMITED EDITIONS
@@ -60,6 +63,7 @@ const Watches = () => {
                                 <Card>
                                     <CardActionArea>
                                         <CardMedia
+                                            className="card-img"
                                             component="img"
                                             image={item.img}
                                             alt="watch-image"
@@ -87,6 +91,10 @@ const Watches = () => {
                                                 gutterBottom
                                                 variant="h6"
                                                 component="div"
+                                                sx={{
+                                                    fontWeight: "bold",
+                                                    fontFamily: "Monospace",
+                                                }}
                                             >
                                                 {item.name.toUpperCase()}
                                             </Typography>

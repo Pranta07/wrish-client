@@ -24,7 +24,10 @@ const UserReviews = () => {
 
     return (
         <Container sx={{ mb: 2 }}>
-            <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
+            <Typography
+                variant="h4"
+                sx={{ fontWeight: "bold", fontFamily: "Monospace", my: 2 }}
+            >
                 REVIEWS
             </Typography>
             <Box sx={{ width: "25%", mx: "auto", mb: 2 }}>

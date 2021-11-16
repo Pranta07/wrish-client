@@ -104,11 +104,24 @@ const Purchase = () => {
                                 alt="watch"
                             />
                             <ImageListItemBar
-                                title={product?.name.toUpperCase()}
+                                title={
+                                    <Typography
+                                        variant="h4"
+                                        sx={{ fontFamily: "Monospace", py: 1 }}
+                                    >
+                                        {product?.name.toUpperCase()}
+                                    </Typography>
+                                }
                                 position="bottom"
                                 actionIcon={
                                     <Box sx={{ marginLeft: "10px" }}>
-                                        <FavoriteIcon sx={{ color: "white" }} />
+                                        <FavoriteIcon
+                                            sx={{
+                                                color: "white",
+                                                width: "40px",
+                                                height: "40px",
+                                            }}
+                                        />
                                     </Box>
                                 }
                                 actionPosition="left"
@@ -123,13 +136,11 @@ const Purchase = () => {
                                 justifyContent: "left",
                             }}
                         >
-                            <Rating
-                                name="read-only"
-                                value={4}
-                                readOnly
-                                size="small"
-                            />
-                            <Typography component="div" variant="h5">
+                            <Typography
+                                component="div"
+                                variant="h4"
+                                sx={{ fontFamily: "Monospace" }}
+                            >
                                 Price: ${product?.price}
                             </Typography>
                             <hr />
@@ -140,6 +151,12 @@ const Purchase = () => {
                             >
                                 {product?.desc.slice(0, 80)}
                             </Typography>
+                            <Rating
+                                name="read-only"
+                                value={4}
+                                readOnly
+                                size="small"
+                            />
                         </CardContent>
 
                         <form onSubmit={handlePlaceOrder} ref={formRef}>

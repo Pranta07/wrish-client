@@ -30,9 +30,8 @@ const ManageProducts = () => {
     const style = {
         m: 1,
         fontFamily: "Monospace",
-        letterSpacing: 2,
+        letterSpacing: 1,
         color: "white",
-        fontWeight: "bold",
         textAlign: "left",
     };
 
@@ -100,6 +99,7 @@ const ManageProducts = () => {
                         <Grid item xs={2} sm={4} md={3} key={product._id}>
                             <div style={{ position: "relative" }}>
                                 <img
+                                    className="card-img"
                                     src={product.img}
                                     alt=""
                                     width="100%"

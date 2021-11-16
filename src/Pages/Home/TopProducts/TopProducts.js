@@ -14,6 +14,7 @@ import Box from "@mui/material/Box";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
+import "./TopProducts.css";
 
 const TopProducts = () => {
     const [watches, setWatches] = useState([]);
@@ -31,7 +32,10 @@ const TopProducts = () => {
     }, []);
     return (
         <Container>
-            <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
+            <Typography
+                variant="h4"
+                sx={{ fontWeight: "bold", fontFamily: "Monospace", my: 2 }}
+            >
                 TOP COLLECTIONS
             </Typography>
             <Typography variant="p" sx={{ my: 2 }}>
@@ -58,6 +62,7 @@ const TopProducts = () => {
                             <Card>
                                 <CardActionArea>
                                     <CardMedia
+                                        className="card-img"
                                         component="img"
                                         image={item.img}
                                         alt="watch-image"
@@ -85,6 +90,10 @@ const TopProducts = () => {
                                             gutterBottom
                                             variant="h6"
                                             component="div"
+                                            sx={{
+                                                fontWeight: "bold",
+                                                fontFamily: "Monospace",
+                                            }}
                                         >
                                             {item.name.toUpperCase()}
                                         </Typography>

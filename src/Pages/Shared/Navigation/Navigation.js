@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar, Chip } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
