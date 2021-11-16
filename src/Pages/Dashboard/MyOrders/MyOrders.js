@@ -7,7 +7,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { IconButton, LinearProgress, Tooltip, Typography } from "@mui/material";
+import {
+    Avatar,
+    IconButton,
+    LinearProgress,
+    Tooltip,
+    Typography,
+} from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
 import Swal from "sweetalert2";
@@ -62,8 +68,15 @@ const MyOrders = () => {
     }, [user.email, isDelete]);
 
     return (
-        <Box>
-            <Typography variant="h3" sx={{ my: 2 }}>
+        <Box
+            style={{
+                borderRadius: "5px",
+                margin: "10px 20px",
+                backgroundColor: "#F4F8FF",
+                opacity: 0.95,
+            }}
+        >
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", py: 1 }}>
                 My Orders
             </Typography>
             <hr />
@@ -99,11 +112,15 @@ const MyOrders = () => {
                                     }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        <img
+                                        {/* <img
                                             src={order?.productImg}
                                             alt=""
                                             width="50"
                                             height="30"
+                                        /> */}
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src={order?.productImg}
                                         />
                                     </TableCell>
                                     <TableCell align="right">

@@ -50,6 +50,8 @@ const AddProduct = () => {
                 borderRadius: "5px",
                 width: "60%",
                 mx: "auto",
+                backgroundColor: "#F4F8FF",
+                opacity: 0.9,
             }}
         >
             <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>

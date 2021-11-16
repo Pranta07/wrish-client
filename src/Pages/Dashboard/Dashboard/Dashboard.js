@@ -24,6 +24,7 @@ import { Avatar, Button } from "@mui/material";
 import {
     Add,
     AdminPanelSettings,
+    Home,
     Payment,
     Reviews,
     Shop,
@@ -70,6 +71,20 @@ function Dashboard(props) {
             <Divider />
             {!loading && (
                 <List>
+                    <Link
+                        to="/home"
+                        style={{
+                            textDecoration: "none",
+                            color: "blueviolet",
+                        }}
+                    >
+                        <ListItem button>
+                            <ListItemIcon>
+                                <Home></Home>
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </Link>
                     <Link
                         to="/watches"
                         style={{
@@ -201,8 +216,17 @@ function Dashboard(props) {
     const container =
         window !== undefined ? () => window().document.body : undefined;
 
+    const style = {
+        backgroundImage: `url("https://i.ibb.co/Xz5cDKh/salvador-escalante-Efjlkpo-Gjs4-unsplash.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        height: "100vh",
+    };
+
     return (
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex" }} style={style}>
             <CssBaseline />
             <AppBar
                 position="fixed"

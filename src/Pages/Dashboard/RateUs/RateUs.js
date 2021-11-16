@@ -35,7 +35,7 @@ const RateUs = () => {
         e.preventDefault();
         review.rating = value;
         formRef.current.reset();
-        // console.log(review);
+
         //send review data to server
         fetch("https://frozen-inlet-30875.herokuapp.com/reviews", {
             method: "POST",
@@ -63,9 +63,15 @@ const RateUs = () => {
                 sx={{
                     width: "60%",
                     border: "1px solid gray",
+                    borderRadius: "5px",
+                    backgroundColor: "#F4F8FF",
+                    opacity: 0.9,
                 }}
             >
-                <Typography variant="h4" sx={{ my: 2 }}>
+                <Typography
+                    variant="h4"
+                    sx={{ fontFamily: "Monospace", my: 2 }}
+                >
                     Share Your Experience.
                 </Typography>
                 <Divider />

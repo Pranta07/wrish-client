@@ -77,8 +77,17 @@ const ManageAllOrders = () => {
     }, [user.email, isUpdate]);
 
     return (
-        <Box>
-            <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>
+        <Box
+            sx={{
+                borderRadius: "5px",
+                margin: "10px 20px",
+                backgroundColor: "#F4F8FF",
+                opacity: 0.93,
+                height: "80vh",
+                overflowX: "scroll",
+            }}
+        >
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", py: 1 }}>
                 Manage Orders
             </Typography>
             <hr />

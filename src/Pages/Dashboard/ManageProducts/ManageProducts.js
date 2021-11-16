@@ -71,8 +71,18 @@ const ManageProducts = () => {
     };
 
     return (
-        <div>
-            <Typography variant="h4" sx={{ fontFamily: "Monospace", my: 2 }}>
+        <Box
+            sx={{
+                borderRadius: "5px",
+                margin: "10px 20px",
+                backgroundColor: "#F4F8FF",
+                opacity: 0.9,
+                p: 3,
+                height: "80vh",
+                overflowX: "scroll",
+            }}
+        >
+            <Typography variant="h4" sx={{ fontFamily: "Monospace", pb: 1 }}>
                 Manage Products
             </Typography>
             <Divider sx={{ my: 1 }}></Divider>
@@ -132,7 +142,7 @@ const ManageProducts = () => {
                     ))}
                 </Grid>
             )}
-        </div>
+        </Box>
     );
 };
 
