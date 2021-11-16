@@ -283,7 +283,6 @@ function Dashboard(props) {
                 }}
             >
                 <Toolbar />
-                {/* <MyOrders></MyOrders> */}
                 <Switch>
                     {!loading && (
                         <Route exact path={path}>
