@@ -7,7 +7,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { IconButton, LinearProgress, Tooltip, Typography } from "@mui/material";
+import {
+    Avatar,
+    IconButton,
+    LinearProgress,
+    Tooltip,
+    Typography,
+} from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
 import Swal from "sweetalert2";
@@ -126,11 +132,9 @@ const ManageAllOrders = () => {
                                 >
                                     <TableCell>{order?.name}</TableCell>
                                     <TableCell component="th" scope="row">
-                                        <img
+                                        <Avatar
+                                            alt="Remy Sharp"
                                             src={order?.productImg}
-                                            alt=""
-                                            width="50"
-                                            height="30"
                                         />
                                     </TableCell>
                                     <TableCell align="right">

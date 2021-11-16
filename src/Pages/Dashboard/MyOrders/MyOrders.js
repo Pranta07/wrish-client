@@ -112,12 +112,6 @@ const MyOrders = () => {
                                     }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        {/* <img
-                                            src={order?.productImg}
-                                            alt=""
-                                            width="50"
-                                            height="30"
-                                        /> */}
                                         <Avatar
                                             alt="Remy Sharp"
                                             src={order?.productImg}
