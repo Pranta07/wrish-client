@@ -13,7 +13,7 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box from "@mui/material/Box";
@@ -31,6 +31,7 @@ const Purchase = () => {
         email: user.email,
     });
     const history = useHistory();
+    const formRef = useRef();
 
     useEffect(() => {
         fetch(`http://localhost:5000/purchase/${id}`)
@@ -45,6 +46,8 @@ const Purchase = () => {
         orderDetails.productPrice = product.price;
         orderDetails.productImg = product.img;
         orderDetails.status = false;
+
+        formRef.current.reset();
 
         //send orderdetails data to server
         fetch("http://localhost:5000/orders", {
@@ -137,7 +140,7 @@ const Purchase = () => {
                         </Typography>
                     </CardContent>
 
-                    <form onSubmit={handlePlaceOrder}>
+                    <form onSubmit={handlePlaceOrder} ref={formRef}>
                         <TextField
                             onBlur={handleChange}
                             disabled

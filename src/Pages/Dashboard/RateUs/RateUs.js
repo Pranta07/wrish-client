@@ -8,13 +8,14 @@ import {
     Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 
 const RateUs = () => {
     const { user } = useAuth();
-    console.log(user);
+    // console.log(user);
+    const formRef = useRef();
     const [value, setValue] = useState(5);
 
     const [review, setReview] = useState({
@@ -33,6 +34,7 @@ const RateUs = () => {
     const handleReviewSubmit = (e) => {
         e.preventDefault();
         review.rating = value;
+        formRef.current.reset();
         // console.log(review);
         //send review data to server
         fetch("http://localhost:5000/reviews", {
@@ -67,7 +69,7 @@ const RateUs = () => {
                     Share Your Experience.
                 </Typography>
                 <Divider />
-                <form onSubmit={handleReviewSubmit}>
+                <form onSubmit={handleReviewSubmit} ref={formRef}>
                     <TextField
                         onBlur={handleChange}
                         defaultValue={user.displayName}
@@ -120,7 +122,7 @@ const RateUs = () => {
                     <Button
                         type="submit"
                         variant="contained"
-                        sx={{ px: 4, my: 2 }}
+                        sx={{ px: 4, my: 2, width: "20%" }}
                     >
                         Submit
                     </Button>

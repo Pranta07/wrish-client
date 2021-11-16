@@ -1,10 +1,8 @@
 import * as React from "react";
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch,
     useHistory,
 } from "react-router-dom";
@@ -22,19 +20,26 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import { Payment, Reviews, Shop, Watch } from "@mui/icons-material";
+import { Avatar, Button } from "@mui/material";
+import {
+    AdminPanelSettings,
+    Payment,
+    Reviews,
+    Shop,
+    Watch,
+} from "@mui/icons-material";
 import MyOrders from "../MyOrders/MyOrders";
 import useAuth from "../../../hooks/useAuth";
 import RateUs from "../RateUs/RateUs";
 import Pay from "../Pay/Pay";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { handleSignOut } = useAuth();
+    const { handleSignOut, user } = useAuth();
     const history = useHistory();
     let { path, url } = useRouteMatch();
 
@@ -91,6 +96,17 @@ function Dashboard(props) {
                         <ListItemText primary="Review" />
                     </ListItem>
                 </Link>
+                <Link
+                    to={`${url}/makeAdmin`}
+                    style={{ textDecoration: "none", color: "blueviolet" }}
+                >
+                    <ListItem button>
+                        <ListItemIcon>
+                            <AdminPanelSettings></AdminPanelSettings>
+                        </ListItemIcon>
+                        <ListItemText primary="Make Admin" />
+                    </ListItem>
+                </Link>
             </List>
             <Divider />
             <Button onClick={() => handleSignOut(history)} variant="text">
@@ -122,8 +138,19 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
+
                     <Typography variant="h6" noWrap component="div">
                         Dashboard
+                    </Typography>
+                    <Avatar
+                        alt="Cindy Baker"
+                        src={user.photoURL}
+                        sx={{ mx: 1 }}
+                    />
+                    <Typography
+                        sx={{ typography: "body2", textAlign: "right" }}
+                    >
+                        {user.displayName}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -186,6 +213,9 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/reviews`}>
                         <RateUs></RateUs>
+                    </Route>
+                    <Route path={`${path}/makeAdmin`}>
+                        <MakeAdmin></MakeAdmin>
                     </Route>
                 </Switch>
             </Box>
