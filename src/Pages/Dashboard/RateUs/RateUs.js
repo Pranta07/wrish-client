@@ -14,12 +14,13 @@ import useAuth from "../../../hooks/useAuth";
 
 const RateUs = () => {
     const { user } = useAuth();
+    console.log(user);
     const [value, setValue] = useState(5);
 
     const [review, setReview] = useState({
         name: user.displayName,
         email: user.email,
-        img: user.photoUrl,
+        img: user.photoURL,
     });
 
     const handleChange = (e) => {
