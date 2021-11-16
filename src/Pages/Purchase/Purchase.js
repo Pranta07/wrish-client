@@ -5,8 +5,6 @@ import {
     CardContent,
     CardMedia,
     Container,
-    Grid,
-    IconButton,
     ImageListItemBar,
     InputAdornment,
     Rating,
@@ -21,6 +19,8 @@ import useAuth from "../../hooks/useAuth";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Description, MailOutline, Phone } from "@mui/icons-material";
 import Swal from "sweetalert2";
+import Navigation from "../Shared/Navigation/Navigation";
+import Footer from "../Shared/Footer/Footer";
 
 const Purchase = () => {
     const [product, setProduct] = useState();
@@ -83,132 +83,136 @@ const Purchase = () => {
     };
 
     return (
-        <Container>
-            <Card
-                sx={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2,1fr)",
-                    boxShadow: 1,
-                    padding: "16px",
-                    my: 3,
-                }}
-            >
-                <Box>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            height="400"
-                            image={product?.img}
-                            alt="watch"
-                        />
-                        <ImageListItemBar
-                            title={product?.name.toUpperCase()}
-                            position="bottom"
-                            actionIcon={
-                                <Box sx={{ marginLeft: "10px" }}>
-                                    <FavoriteIcon sx={{ color: "white" }} />
-                                </Box>
-                            }
-                            actionPosition="left"
-                        />
-                    </CardActionArea>
-                </Box>
-                <Box>
-                    <CardContent
-                        sx={{
-                            flex: "1 0 auto",
-                            padding: "20px",
-                            justifyContent: "left",
-                        }}
-                    >
-                        <Rating
-                            name="read-only"
-                            value={4}
-                            readOnly
-                            size="small"
-                        />
-                        <Typography component="div" variant="h5">
-                            Price: ${product?.price}
-                        </Typography>
-                        <hr />
-                        <Typography
-                            variant="subtitle1"
-                            component="div"
-                            color="text.secondary"
+        <Box>
+            <Navigation />
+            <Container>
+                <Card
+                    sx={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2,1fr)",
+                        boxShadow: 1,
+                        padding: "16px",
+                        my: 3,
+                    }}
+                >
+                    <Box>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="400"
+                                image={product?.img}
+                                alt="watch"
+                            />
+                            <ImageListItemBar
+                                title={product?.name.toUpperCase()}
+                                position="bottom"
+                                actionIcon={
+                                    <Box sx={{ marginLeft: "10px" }}>
+                                        <FavoriteIcon sx={{ color: "white" }} />
+                                    </Box>
+                                }
+                                actionPosition="left"
+                            />
+                        </CardActionArea>
+                    </Box>
+                    <Box>
+                        <CardContent
+                            sx={{
+                                flex: "1 0 auto",
+                                padding: "20px",
+                                justifyContent: "left",
+                            }}
                         >
-                            {product?.desc.slice(0, 80)}
-                        </Typography>
-                    </CardContent>
+                            <Rating
+                                name="read-only"
+                                value={4}
+                                readOnly
+                                size="small"
+                            />
+                            <Typography component="div" variant="h5">
+                                Price: ${product?.price}
+                            </Typography>
+                            <hr />
+                            <Typography
+                                variant="subtitle1"
+                                component="div"
+                                color="text.secondary"
+                            >
+                                {product?.desc.slice(0, 80)}
+                            </Typography>
+                        </CardContent>
 
-                    <form onSubmit={handlePlaceOrder} ref={formRef}>
-                        <TextField
-                            onBlur={handleChange}
-                            disabled
-                            defaultValue={user.displayName}
-                            label="Name"
-                            name="name"
-                            variant="standard"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <AccountCircle />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{ width: "75%" }}
-                        />
-                        <TextField
-                            disabled
-                            onBlur={handleChange}
-                            defaultValue={user.email}
-                            label="Email"
-                            name="email"
-                            variant="standard"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <MailOutline></MailOutline>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{ width: "75%", my: 1 }}
-                        />
-                        <TextField
-                            onBlur={handleChange}
-                            name="address"
-                            label="Address"
-                            variant="standard"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <Description></Description>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{ width: "75%", my: 1 }}
-                        />
-                        <TextField
-                            onBlur={handleChange}
-                            name="phone"
-                            label="Phone"
-                            variant="standard"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <Phone></Phone>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{ width: "75%", my: 1 }}
-                        />
-                        <br />
-                        <Button type="submit" variant="contained">
-                            Place Order
-                        </Button>
-                    </form>
-                </Box>
-            </Card>
-        </Container>
+                        <form onSubmit={handlePlaceOrder} ref={formRef}>
+                            <TextField
+                                onBlur={handleChange}
+                                disabled
+                                defaultValue={user.displayName}
+                                label="Name"
+                                name="name"
+                                variant="standard"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <AccountCircle />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{ width: "75%" }}
+                            />
+                            <TextField
+                                disabled
+                                onBlur={handleChange}
+                                defaultValue={user.email}
+                                label="Email"
+                                name="email"
+                                variant="standard"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <MailOutline></MailOutline>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{ width: "75%", my: 1 }}
+                            />
+                            <TextField
+                                onBlur={handleChange}
+                                name="address"
+                                label="Address"
+                                variant="standard"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <Description></Description>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{ width: "75%", my: 1 }}
+                            />
+                            <TextField
+                                onBlur={handleChange}
+                                name="phone"
+                                label="Phone"
+                                variant="standard"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <Phone></Phone>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{ width: "75%", my: 1 }}
+                            />
+                            <br />
+                            <Button type="submit" variant="contained">
+                                Place Order
+                            </Button>
+                        </form>
+                    </Box>
+                </Card>
+            </Container>
+            <Footer />
+        </Box>
     );
 };
 
