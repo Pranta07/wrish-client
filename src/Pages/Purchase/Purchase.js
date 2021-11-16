@@ -44,6 +44,7 @@ const Purchase = () => {
         orderDetails.productName = product.name;
         orderDetails.productPrice = product.price;
         orderDetails.productImg = product.img;
+        orderDetails.status = false;
 
         //send orderdetails data to server
         fetch("http://localhost:5000/orders", {

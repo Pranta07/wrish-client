@@ -14,6 +14,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import Navigation from "../Shared/Navigation/Navigation";
+import Footer from "../Shared/Footer/Footer";
 
 const Watches = () => {
     const [watches, setWatches] = useState([]);
@@ -30,99 +32,106 @@ const Watches = () => {
             });
     }, []);
     return (
-        <Container sx={{ mb: 3 }}>
-            <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
-                Explore All Watch Of Your Choice
-            </Typography>
-            <Typography variant="p" sx={{ my: 2 }}>
-                BE THE FIRST TO GET LIMITED EDITIONS
-            </Typography>
-            <Box sx={{ width: "30%", mx: "auto", mb: 2 }}>
-                <hr />
-            </Box>
-            {isLoading && (
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                    <CircularProgress />
+        <Box>
+            <Navigation></Navigation>
+            <Container sx={{ mb: 3 }}>
+                <Typography variant="h4" sx={{ fontWeight: "bold", my: 2 }}>
+                    Explore All Watch Of Your Choice
+                </Typography>
+                <Typography variant="p" sx={{ my: 2 }}>
+                    BE THE FIRST TO GET LIMITED EDITIONS
+                </Typography>
+                <Box sx={{ width: "30%", mx: "auto", mb: 2 }}>
+                    <hr />
                 </Box>
-            )}
-            <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
-                <Grid
-                    container
-                    spacing={{ xs: 2, md: 3 }}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
-                >
-                    {watches.map((item) => (
-                        <Grid item xs={2} sm={4} md={3} key={item._id}>
-                            <Card>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        image={item.img}
-                                        alt="watch-image"
-                                    />
-                                    <ImageListItemBar
-                                        sx={{
-                                            background:
-                                                "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
-                                                "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
-                                        }}
-                                        position="top"
-                                        actionIcon={
-                                            <IconButton
-                                                sx={{ color: "white" }}
-                                                aria-label={`star ${item.title}`}
-                                            >
-                                                <FavoriteIcon />
-                                            </IconButton>
-                                        }
-                                        actionPosition="left"
-                                    />
+                {isLoading && (
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                        <CircularProgress />
+                    </Box>
+                )}
+                <Box sx={{ flexGrow: 1, justifyContent: "center" }}>
+                    <Grid
+                        container
+                        spacing={{ xs: 2, md: 3 }}
+                        columns={{ xs: 4, sm: 8, md: 12 }}
+                    >
+                        {watches.map((item) => (
+                            <Grid item xs={2} sm={4} md={3} key={item._id}>
+                                <Card>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            image={item.img}
+                                            alt="watch-image"
+                                        />
+                                        <ImageListItemBar
+                                            sx={{
+                                                background:
+                                                    "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
+                                                    "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+                                            }}
+                                            position="top"
+                                            actionIcon={
+                                                <IconButton
+                                                    sx={{ color: "white" }}
+                                                    aria-label={`star ${item.title}`}
+                                                >
+                                                    <FavoriteIcon />
+                                                </IconButton>
+                                            }
+                                            actionPosition="left"
+                                        />
 
-                                    <CardContent>
-                                        <Typography
-                                            gutterBottom
-                                            variant="h6"
-                                            component="div"
-                                        >
-                                            {item.name.toUpperCase()}
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            color="text.secondary"
-                                        >
-                                            {item.desc.slice(0, 50)}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                    }}
-                                >
-                                    <Link
-                                        to={`purchase/${item._id}`}
-                                        style={{ textDecoration: "none" }}
+                                        <CardContent>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h6"
+                                                component="div"
+                                            >
+                                                {item.name.toUpperCase()}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.secondary"
+                                            >
+                                                {item.desc.slice(0, 50)}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                        }}
                                     >
-                                        <Button size="small" color="primary">
-                                            Buy Now
+                                        <Link
+                                            to={`purchase/${item._id}`}
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            <Button
+                                                size="small"
+                                                color="primary"
+                                            >
+                                                Buy Now
+                                            </Button>
+                                        </Link>
+                                        <Button
+                                            variant="text"
+                                            size="small"
+                                            color="secondary"
+                                            sx={{ ms: 3 }}
+                                        >
+                                            ${item.price}
                                         </Button>
-                                    </Link>
-                                    <Button
-                                        variant="text"
-                                        size="small"
-                                        color="secondary"
-                                        sx={{ ms: 3 }}
-                                    >
-                                        ${item.price}
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
-        </Container>
+                                    </CardActions>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+            </Container>
+            <Footer></Footer>
+        </Box>
     );
 };
 
