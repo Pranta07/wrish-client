@@ -56,7 +56,7 @@ function Dashboard(props) {
 
     React.useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/users/${user.email}`)
             .then((res) => res.json())
             .then((user) => {
                 if (user.role === "admin") setAdmin(true);

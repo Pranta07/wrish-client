@@ -113,7 +113,7 @@ const useFirebase = () => {
 
     const saveUser = (name, email) => {
         const userData = { name, email };
-        fetch("http://localhost:5000/users", {
+        fetch("https://frozen-inlet-30875.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

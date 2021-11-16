@@ -30,7 +30,7 @@ const MyOrders = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/orders/${id}`, {
+                fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -50,7 +50,7 @@ const MyOrders = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);

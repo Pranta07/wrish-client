@@ -17,7 +17,7 @@ const AddProduct = () => {
     const handleAddProduct = (e) => {
         e.preventDefault();
         // console.log(product);
-        fetch("http://localhost:5000/watches", {
+        fetch("https://frozen-inlet-30875.herokuapp.com/watches", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

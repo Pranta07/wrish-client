@@ -34,7 +34,7 @@ const Purchase = () => {
     const formRef = useRef();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/purchase/${id}`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/purchase/${id}`)
             .then((res) => res.json())
             .then((data) => setProduct(data));
     }, [id]);
@@ -50,7 +50,7 @@ const Purchase = () => {
         formRef.current.reset();
 
         //send orderdetails data to server
-        fetch("http://localhost:5000/orders", {
+        fetch("https://frozen-inlet-30875.herokuapp.com/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -17,7 +17,7 @@ const UserReviews = () => {
     };
     //fetching request for all reviews
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch("https://frozen-inlet-30875.herokuapp.com/reviews")
             .then((res) => res.json())
             .then((data) => setReviews(data));
     }, []);

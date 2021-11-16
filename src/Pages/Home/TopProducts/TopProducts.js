@@ -21,7 +21,7 @@ const TopProducts = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:5000/watches/${6}`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/watches/${6}`)
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);

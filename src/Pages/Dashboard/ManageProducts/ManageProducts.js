@@ -18,7 +18,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:5000/watches/all`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/watches/all`)
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);
@@ -48,9 +48,12 @@ const ManageProducts = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/watches/${id}`, {
-                    method: "DELETE",
-                })
+                fetch(
+                    `https://frozen-inlet-30875.herokuapp.com/watches/${id}`,
+                    {
+                        method: "DELETE",
+                    }
+                )
                     .then((res) => res.json())
                     .then((result) => {
                         // console.log(result);

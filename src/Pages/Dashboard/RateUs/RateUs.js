@@ -37,7 +37,7 @@ const RateUs = () => {
         formRef.current.reset();
         // console.log(review);
         //send review data to server
-        fetch("http://localhost:5000/reviews", {
+        fetch("https://frozen-inlet-30875.herokuapp.com/reviews", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
