@@ -7,13 +7,13 @@ const UserReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     const style = {
+        height: "400px",
         backgroundImage: `url("https://i.ibb.co/rk51MHM/daniele-levis-pelusi-rm-M8-V7-L1-Bh-M-unsplash.jpg")`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         flexGrow: 1,
-        height: "400",
     };
     //fetching request for all reviews
     useEffect(() => {
