@@ -7,19 +7,35 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
-import { IconButton, Tooltip, Typography } from "@mui/material";
+import { IconButton, LinearProgress, Tooltip, Typography } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
-import { Delete } from "@mui/icons-material";
+import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
 import Swal from "sweetalert2";
 const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
-    const [isDelete, steIsDelete] = useState(false);
+    const [isUpdate, steIsUpdate] = useState(false);
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
 
+    const handleShipped = (id) => {
+        steIsUpdate(false);
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.modifiedCount) {
+                    steIsUpdate(true);
+                }
+            });
+    };
+
     const handleDelete = (id) => {
         // console.log(id);
-        steIsDelete(false);
+        steIsUpdate(false);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -37,7 +53,7 @@ const ManageAllOrders = () => {
                     .then((result) => {
                         // console.log(result);
                         if (result.deletedCount) {
-                            steIsDelete(true);
+                            steIsUpdate(true);
                             Swal.fire(
                                 "Deleted!",
                                 "Your order has been deleted.",
@@ -58,7 +74,7 @@ const ManageAllOrders = () => {
                 setAllOrders(data);
             })
             .finally(() => setLoading(false));
-    }, [user.email, isDelete]);
+    }, [user.email, isUpdate]);
 
     return (
         <Box>
@@ -66,7 +82,13 @@ const ManageAllOrders = () => {
                 Manage all Orders
             </Typography>
             <hr />
-            {allOrders.length === 0 ? (
+            {loading && (
+                <Box sx={{ width: "100%" }}>
+                    <LinearProgress />
+                </Box>
+            )}
+
+            {allOrders.length === 0 && !loading ? (
                 <Typography variant="h3" sx={{ my: 2 }}>
                     No Orders Done Yet!
                 </Typography>
@@ -110,13 +132,34 @@ const ManageAllOrders = () => {
                                     </TableCell>
                                     <TableCell align="right">
                                         {order?.status ? "Shipped" : "Pending"}
-                                    </TableCell>
-                                    <TableCell
-                                        onClick={() => handleDelete(order._id)}
-                                        align="right"
-                                    >
-                                        <Tooltip title="Delete">
+                                        {!order?.status ? (
                                             <IconButton>
+                                                <Pending></Pending>
+                                            </IconButton>
+                                        ) : (
+                                            <Tooltip title="Shipped">
+                                                <IconButton>
+                                                    <LocalShippingRounded></LocalShippingRounded>
+                                                </IconButton>
+                                            </Tooltip>
+                                        )}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <Tooltip title="Shipped">
+                                            <IconButton
+                                                onClick={() =>
+                                                    handleShipped(order._id)
+                                                }
+                                            >
+                                                <LocalShippingRounded></LocalShippingRounded>
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Delete">
+                                            <IconButton
+                                                onClick={() =>
+                                                    handleDelete(order._id)
+                                                }
+                                            >
                                                 <Delete></Delete>
                                             </IconButton>
                                         </Tooltip>
