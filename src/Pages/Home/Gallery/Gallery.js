@@ -42,7 +42,6 @@ const Gallery = () => {
                     {imgUrls.map((url) => (
                         <Box sx={{ position: "relative" }} id="box" key={url}>
                             <Avatar
-                                className="gallery-img"
                                 alt="watch-img"
                                 src={url}
                                 sx={{ width: 150, height: 150 }}

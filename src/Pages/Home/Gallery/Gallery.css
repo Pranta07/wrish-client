@@ -1,4 +1,4 @@
-.gallery-img:hover img {
+#box:hover img {
     transition: 0.3s ease-in-out !important;
     opacity: 0.8;
 }
