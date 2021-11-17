@@ -71,9 +71,10 @@ const MyOrders = () => {
         <Box
             style={{
                 borderRadius: "5px",
-                margin: "10px 20px",
                 backgroundColor: "#F4F8FF",
                 opacity: 0.95,
+                height: "80vh",
+                overflowX: "scroll",
             }}
         >
             <Typography variant="h4" sx={{ fontFamily: "Monospace", py: 1 }}>
@@ -91,7 +92,7 @@ const MyOrders = () => {
                 </Typography>
             ) : (
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>Watch</TableCell>
