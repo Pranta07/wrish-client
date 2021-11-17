@@ -48,7 +48,7 @@ const MakeAdmin = () => {
             sx={{
                 border: "1px solid gray",
                 borderRadius: "5px",
-                width: "60%",
+                width: "80%",
                 mx: "auto",
                 p: 3,
                 backgroundColor: "#F4F8FF",

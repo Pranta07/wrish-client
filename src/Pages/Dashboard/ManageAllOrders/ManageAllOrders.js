@@ -7,6 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
+import useAuth from "../../../hooks/useAuth";
+import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
+import Swal from "sweetalert2";
 import {
     Avatar,
     IconButton,
@@ -14,9 +17,7 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
-import useAuth from "../../../hooks/useAuth";
-import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
-import Swal from "sweetalert2";
+
 const ManageAllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     const [isUpdate, steIsUpdate] = useState(false);
@@ -84,13 +85,13 @@ const ManageAllOrders = () => {
 
     return (
         <Box
-            sx={{
+            style={{
                 borderRadius: "5px",
-                margin: "10px 20px",
                 backgroundColor: "#F4F8FF",
                 opacity: 0.93,
-                height: "80vh",
+                height: "85vh",
                 overflowX: "scroll",
+                margin: "0",
             }}
         >
             <Typography variant="h4" sx={{ fontFamily: "Monospace", py: 1 }}>
@@ -109,13 +110,13 @@ const ManageAllOrders = () => {
                 </Typography>
             ) : (
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>User</TableCell>
                                 <TableCell>Watch</TableCell>
                                 <TableCell align="right">Brand</TableCell>
-                                <TableCell align="right">Price</TableCell>
+                                {/* <TableCell align="right">Price</TableCell> */}
                                 <TableCell align="right">Status</TableCell>
                                 <TableCell align="right">Action</TableCell>
                             </TableRow>
@@ -140,9 +141,9 @@ const ManageAllOrders = () => {
                                     <TableCell align="right">
                                         {order?.productName}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    {/* <TableCell align="right">
                                         ${order?.productPrice}
-                                    </TableCell>
+                                    </TableCell> */}
                                     <TableCell align="right">
                                         {order?.status ? "Shipped" : "Pending"}
                                         {!order?.status ? (

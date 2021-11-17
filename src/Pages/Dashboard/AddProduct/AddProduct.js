@@ -41,7 +41,7 @@ const AddProduct = () => {
             sx={{
                 border: "1px solid gray",
                 borderRadius: "5px",
-                width: "60%",
+                width: { xs: "95%", sm: "95%", md: "60%" },
                 mx: "auto",
                 backgroundColor: "#F4F8FF",
                 opacity: 0.9,
@@ -57,14 +57,14 @@ const AddProduct = () => {
                     onBlur={handleChange}
                     label="Product Name"
                     name="name"
-                    sx={{ width: "70%", my: 1 }}
+                    sx={{ width: { xs: "90%", sm: "90%", md: "70%" }, my: 1 }}
                 />
                 <TextField
                     required
                     onBlur={handleChange}
                     label="Product Price"
                     name="price"
-                    sx={{ width: "70%", my: 1 }}
+                    sx={{ width: { xs: "90%", sm: "90%", md: "70%" }, my: 1 }}
                 />
                 <TextField
                     required
@@ -73,14 +73,14 @@ const AddProduct = () => {
                     label="Short Description"
                     multiline
                     rows={4}
-                    sx={{ width: "70%", my: 1 }}
+                    sx={{ width: { xs: "90%", sm: "90%", md: "70%" }, my: 1 }}
                 />
                 <TextField
                     required
                     onBlur={handleChange}
                     name="img"
                     label="Img URL"
-                    sx={{ width: "70%", my: 1 }}
+                    sx={{ width: { xs: "90%", sm: "90%", md: "70%" }, my: 1 }}
                 />
                 <br />
                 <Button type="submit" variant="contained" sx={{ my: 2, px: 4 }}>
