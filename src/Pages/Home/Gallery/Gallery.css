@@ -1,0 +1,8 @@
+.gallery-img:hover img {
+    transition: 0.3s ease-in-out !important;
+    opacity: 0.8;
+}
+
+#box:hover #icon-btn {
+    display: block !important;
+}
