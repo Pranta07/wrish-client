@@ -39,7 +39,7 @@ const Login = () => {
         const name = e.target.name;
         newInfo[name] = e.target.value;
         setLoginInfo(newInfo);
-        console.log(name, newInfo);
+        // console.log(name, newInfo);
     };
 
     const handleClickShowPassword = () => {

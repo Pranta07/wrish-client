@@ -4,7 +4,7 @@ import React from "react";
 
 const Pay = () => {
     return (
-        <Box sx={{ width: "60%" }}>
+        <Box>
             <Typography
                 variant="h4"
                 sx={{ fontFamily: "Monospace", py: 1, color: "white" }}

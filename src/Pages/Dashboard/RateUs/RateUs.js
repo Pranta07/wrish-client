@@ -61,7 +61,6 @@ const RateUs = () => {
         <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Box
                 sx={{
-                    width: "60%",
                     border: "1px solid gray",
                     borderRadius: "5px",
                     backgroundColor: "#F4F8FF",

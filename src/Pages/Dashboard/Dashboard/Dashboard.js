@@ -226,11 +226,20 @@ function Dashboard(props) {
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
-        height: "100vh",
     };
 
     return (
-        <Box sx={{ display: "flex" }} style={style}>
+        <Box
+            style={style}
+            sx={{
+                display: "flex",
+                height: {
+                    xs: "100%!important",
+                    sm: "100%!important",
+                    md: "100vh!important",
+                },
+            }}
+        >
             <CssBaseline />
             <AppBar
                 position="fixed"
