@@ -99,7 +99,7 @@ function DrawerComponent() {
                                         color: "blueviolet",
                                     }}
                                 >
-                                    <Button variant="contained">Login</Button>
+                                    Login
                                 </Link>
                             </ListItemText>
                         </ListItem>

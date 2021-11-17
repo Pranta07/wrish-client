@@ -4,11 +4,18 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Avatar, CssBaseline, useMediaQuery, useTheme } from "@mui/material";
+import {
+    Avatar,
+    CssBaseline,
+    IconButton,
+    useMediaQuery,
+    useTheme,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import DrawerComponent from "../DrawerComponent/DrawerComponent";
+import { Login } from "@mui/icons-material";
 
 const Navigation = () => {
     const { user, handleSignOut } = useAuth();
@@ -78,16 +85,25 @@ const Navigation = () => {
                                 </Box>
                             )}
                             {!user.email ? (
-                                <Link
-                                    to="login"
+                                <Box
                                     sx={{
-                                        textDecoration: "none",
                                         mr: 3,
                                         ml: "auto",
                                     }}
                                 >
-                                    <Button variant="contained">Login</Button>
-                                </Link>
+                                    <Link
+                                        to="login"
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "white",
+                                        }}
+                                    >
+                                        <IconButton>
+                                            <Login></Login>
+                                        </IconButton>
+                                        Login
+                                    </Link>
+                                </Box>
                             ) : (
                                 <Box
                                     sx={{
