@@ -4,7 +4,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const Brands = () => {
+const Gallery = () => {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -31,50 +31,44 @@ const Brands = () => {
                 <Carousel responsive={responsive}>
                     <div>
                         <Avatar
+                            alt="Remy Sharp"
                             src="https://i.ibb.co/ZYnPGnk/download.png"
-                            alt="Remy Sharp"
-                            sx={{ width: 150, height: 150 }}
-                        />
-                    </div>
-                    <div>
-                        <Avatar
-                            src="https://i.ibb.co/gS4GvPs/Rolex-Logo.jpg"
-                            alt="Remy Sharp"
-                            sx={{ width: 150, height: 150 }}
-                        />
-                    </div>
-                    <div>
-                        <Avatar
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            alt="Remy Sharp"
-                            sx={{ width: 150, height: 150 }}
-                        />
-                    </div>
-                    <div>
-                        <Avatar
-                            src="https://i.ibb.co/GHqrFNn/images-2.jpg"
-                            alt="Remy Sharp"
-                            sx={{ width: 150, height: 150 }}
-                        />
-                    </div>
-                    <div>
-                        <Avatar
-                            alt="Remy Sharp"
-                            src="https://i.ibb.co/mvNbY0J/images.png"
-                            sx={{ width: 150, height: 150 }}
+                            sx={{ width: 100, height: 100 }}
                         />
                     </div>
                     <div>
                         <Avatar
                             alt="Remy Sharp"
                             src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 150, height: 150 }}
+                            sx={{ width: 100, height: 100 }}
+                        />
+                    </div>
+                    <div>
+                        <Avatar
+                            alt="Remy Sharp"
+                            src="https://i.ibb.co/ZYnPGnk/download.png"
+                            sx={{ width: 100, height: 100 }}
+                        />
+                    </div>
+                    <div>
+                        <Avatar
+                            alt="Remy Sharp"
+                            src="https://i.ibb.co/ZYnPGnk/download.png"
+                            sx={{ width: 100, height: 100 }}
+                        />
+                    </div>
+                    <div>
+                        <Avatar
+                            alt="Remy Sharp"
+                            src="https://i.ibb.co/ZYnPGnk/download.png"
+                            sx={{ width: 100, height: 100 }}
                         />
                     </div>
                 </Carousel>
+                ;
             </Box>
         </Container>
     );
 };
 
-export default Brands;
+export default Gallery;
