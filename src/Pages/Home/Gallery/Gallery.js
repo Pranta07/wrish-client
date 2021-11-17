@@ -32,40 +32,46 @@ const Gallery = () => {
                     <div>
                         <Avatar
                             alt="Remy Sharp"
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 100, height: 100 }}
+                            src="https://i.ibb.co/8bdtSpw/marcin-nowak-yd3-Gxapk-Wi-M-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
                         />
                     </div>
                     <div>
                         <Avatar
                             alt="Remy Sharp"
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 100, height: 100 }}
+                            src="https://i.ibb.co/s3yns7Z/matt-brett-5-Nhqzpj-V-zc-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
                         />
                     </div>
                     <div>
                         <Avatar
                             alt="Remy Sharp"
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 100, height: 100 }}
+                            src="https://i.ibb.co/xfnZTPp/klickors-moe-1-Cji-CJg-HOOY-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
                         />
                     </div>
                     <div>
                         <Avatar
                             alt="Remy Sharp"
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 100, height: 100 }}
+                            src="https://i.ibb.co/TvCZ4cP/hans-gaber-x-BEn77-CZ8-Q-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
                         />
                     </div>
                     <div>
                         <Avatar
                             alt="Remy Sharp"
-                            src="https://i.ibb.co/ZYnPGnk/download.png"
-                            sx={{ width: 100, height: 100 }}
+                            src="https://i.ibb.co/rQTgMJ1/joppe-spaa-bo3-KAZHZw-Ik-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
+                        />
+                    </div>
+                    <div>
+                        <Avatar
+                            alt="Remy Sharp"
+                            src="https://i.ibb.co/8PCC2bP/jorg-helberg-Jy-ICT-Cnbec-unsplash.jpg"
+                            sx={{ width: 150, height: 150 }}
                         />
                     </div>
                 </Carousel>
-                ;
             </Box>
         </Container>
     );
