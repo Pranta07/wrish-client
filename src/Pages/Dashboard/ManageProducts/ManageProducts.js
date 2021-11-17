@@ -96,7 +96,7 @@ const ManageProducts = () => {
                     columns={{ xs: 4, sm: 8, md: 12 }}
                 >
                     {watches?.map((product) => (
-                        <Grid item xs={2} sm={4} md={3} key={product._id}>
+                        <Grid item xs={4} sm={4} md={3} key={product._id}>
                             <div style={{ position: "relative" }}>
                                 <img
                                     className="card-img"

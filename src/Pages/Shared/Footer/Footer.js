@@ -30,7 +30,7 @@ const Footer = () => {
                 columns={{ xs: 4, sm: 8, md: 12 }}
                 sx={{ borderBottom: "1px solid gray", padding: "10px" }}
             >
-                <Grid item xs={2} sm={4} md={3}>
+                <Grid item xs={4} sm={4} md={3}>
                     <Typography component="div">
                         <Box
                             sx={{
@@ -47,7 +47,7 @@ const Footer = () => {
                     <Typography sx={style}>Terms & Conditions</Typography>
                     <Typography sx={style}>Privacy Policy</Typography>
                 </Grid>
-                <Grid item xs={2} sm={4} md={3}>
+                <Grid item xs={4} sm={4} md={3}>
                     <Typography component="div">
                         <Box
                             sx={{
@@ -65,7 +65,7 @@ const Footer = () => {
                     <Typography sx={style}>Terms of Service</Typography>
                     <Typography sx={style}>Refund policy Contact</Typography>
                 </Grid>
-                <Grid item xs={2} sm={4} md={3}>
+                <Grid item xs={4} sm={4} md={3}>
                     <Typography component="div">
                         <Box
                             sx={{
@@ -83,7 +83,7 @@ const Footer = () => {
                     <Typography sx={style}>Protection Plan</Typography>
                     <Typography sx={style}>Gift Cards</Typography>
                 </Grid>
-                <Grid item xs={2} sm={4} md={3}>
+                <Grid item xs={4} sm={4} md={3}>
                     <Typography component="div">
                         <Box
                             sx={{

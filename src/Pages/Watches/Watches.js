@@ -59,7 +59,7 @@ const Watches = () => {
                         columns={{ xs: 4, sm: 8, md: 12 }}
                     >
                         {watches.map((item) => (
-                            <Grid item xs={2} sm={4} md={3} key={item._id}>
+                            <Grid item xs={4} sm={4} md={3} key={item._id}>
                                 <Card>
                                     <CardActionArea>
                                         <CardMedia

@@ -25,6 +25,7 @@ import {
     Add,
     AdminPanelSettings,
     Home,
+    Logout,
     Payment,
     Reviews,
     Shop,
@@ -207,9 +208,12 @@ function Dashboard(props) {
                 </List>
             )}
             <Divider />
-            <Button onClick={() => handleSignOut(history)} variant="text">
-                Logout
-            </Button>
+            <ListItem onClick={() => handleSignOut(history)}>
+                <ListItemIcon>
+                    <Logout></Logout>
+                </ListItemIcon>
+                <ListItemText>Logout</ListItemText>
+            </ListItem>
         </div>
     );
 

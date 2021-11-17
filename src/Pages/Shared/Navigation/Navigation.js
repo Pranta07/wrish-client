@@ -6,19 +6,24 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar } from "@mui/material";
+import { Avatar, CssBaseline, useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
+import DrawerComponent from "../DrawerComponent/DrawerComponent";
+
 const Navigation = () => {
     const { user, handleSignOut } = useAuth();
     const history = useHistory();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position="static">
+                <CssBaseline />
                 <Toolbar>
-                    <IconButton
+                    {/* <IconButton
                         size="large"
                         edge="start"
                         color="inherit"
@@ -26,7 +31,7 @@ const Navigation = () => {
                         sx={{ mr: 2 }}
                     >
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton> */}
 
                     <Avatar
                         alt="Example Alt"
@@ -37,62 +42,89 @@ const Navigation = () => {
                         alt=""
                         width="80"
                     />
-                    <Box sx={{ mx: 1 }}>
-                        <Link to="/home" style={{ textDecoration: "none" }}>
-                            <Button variant="contained">Home</Button>
-                        </Link>
-                    </Box>
-                    <Box sx={{ mr: 1 }}>
-                        <Link to="/watches" style={{ textDecoration: "none" }}>
-                            <Button variant="contained">Watches</Button>
-                        </Link>
-                    </Box>
-                    {user.email && (
-                        <Box sx={{ mr: 1 }}>
-                            <Link
-                                to="/dashboard"
-                                style={{ textDecoration: "none" }}
-                            >
-                                <Button variant="contained">Dashboard</Button>
-                            </Link>
-                        </Box>
-                    )}
-                    {!user.email ? (
-                        <Link
-                            to="login"
-                            style={{
-                                textDecoration: "none",
-                                marginLeft: "auto",
-                                marginRight: "5px",
-                            }}
-                        >
-                            <Button variant="contained">Login</Button>
-                        </Link>
+
+                    {isMobile ? (
+                        <DrawerComponent />
                     ) : (
                         <Box
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                            }}
-                            style={{
-                                marginLeft: "auto",
-                                marginRight: "5px",
+                                // border: "1px solid red",
+                                width: "100%",
                             }}
                         >
-                            <Typography sx={{ typography: "body2" }}>
-                                {user.displayName}
-                            </Typography>
-                            <Avatar
-                                alt="Cindy Baker"
-                                src={user.photoURL}
-                                sx={{ mx: 1 }}
-                            />
-                            <Button
-                                onClick={() => handleSignOut(history)}
-                                variant="contained"
-                            >
-                                Logout
-                            </Button>
+                            <Box sx={{ mx: 2 }}>
+                                <Link
+                                    to="/home"
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                    }}
+                                >
+                                    Home
+                                </Link>
+                            </Box>
+                            <Box sx={{ mx: 1 }}>
+                                <Link
+                                    to="/watches"
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                    }}
+                                >
+                                    Watches
+                                </Link>
+                            </Box>
+                            {user.email && (
+                                <Box sx={{ mx: 1 }}>
+                                    <Link
+                                        to="/dashboard"
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "white",
+                                        }}
+                                    >
+                                        Dashboard
+                                    </Link>
+                                </Box>
+                            )}
+                            {!user.email ? (
+                                <Link
+                                    to="login"
+                                    sx={{
+                                        textDecoration: "none",
+                                        mr: 3,
+                                        ml: "auto",
+                                    }}
+                                >
+                                    <Button variant="contained">Login</Button>
+                                </Link>
+                            ) : (
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        ml: "auto",
+                                        mr: 3,
+                                    }}
+                                >
+                                    <Typography sx={{ typography: "body2" }}>
+                                        {user.displayName}
+                                    </Typography>
+                                    <Avatar
+                                        alt="Cindy Baker"
+                                        src={user.photoURL}
+                                        sx={{ mx: 1 }}
+                                    />
+                                    <Button
+                                        onClick={() => handleSignOut(history)}
+                                        variant="contained"
+                                    >
+                                        Logout
+                                    </Button>
+                                </Box>
+                            )}
                         </Box>
                     )}
                 </Toolbar>
