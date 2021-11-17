@@ -3,7 +3,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useHistory } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import {
-    Avatar,
     Button,
     Divider,
     Drawer,
@@ -12,9 +11,7 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    Typography,
 } from "@mui/material";
-import Box from "@mui/material/Box";
 import {
     Home,
     Login,

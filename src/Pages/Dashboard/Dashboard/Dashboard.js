@@ -20,7 +20,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Avatar, Button } from "@mui/material";
+import { Avatar } from "@mui/material";
 import {
     Add,
     AdminPanelSettings,
