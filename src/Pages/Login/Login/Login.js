@@ -58,24 +58,27 @@ const Login = () => {
         <Grid
             container
             spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+            columns={{ xs: 4, sm: 4, md: 12 }}
         >
-            <Grid item xs={12} sm={12} md={6}>
+            <Grid item xs={4} sm={2} md={6}>
                 <div>
                     <img
                         src="https://i.ibb.co/wwRxhYm/Mobile-login-pana.png"
                         alt=""
                         width="100%"
-                        height="600"
                     />
                 </div>
             </Grid>
             <Grid
                 item
-                xs={12}
-                sm={12}
+                xs={4}
+                sm={2}
                 md={6}
-                sx={{ display: "flex", alignItems: "center" }}
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
             >
                 <Box
                     sx={{

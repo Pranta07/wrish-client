@@ -68,22 +68,24 @@ function DrawerComponent() {
                             </Link>
                         </ListItemText>
                     </ListItem>
-                    <ListItem onClick={() => setOpenDrawer(false)}>
-                        <ListItemIcon>
-                            <Dashboard></Dashboard>
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Link
-                                to="/dashboard"
-                                style={{
-                                    textDecoration: "none",
-                                    color: "blueviolet",
-                                }}
-                            >
-                                Dashboard
-                            </Link>
-                        </ListItemText>
-                    </ListItem>
+                    {user.email && (
+                        <ListItem onClick={() => setOpenDrawer(false)}>
+                            <ListItemIcon>
+                                <Dashboard></Dashboard>
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Link
+                                    to="/dashboard"
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "blueviolet",
+                                    }}
+                                >
+                                    Dashboard
+                                </Link>
+                            </ListItemText>
+                        </ListItem>
+                    )}
                     <Divider />
 
                     {!user.email ? (
