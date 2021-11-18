@@ -240,12 +240,13 @@ function Dashboard(props) {
                 },
             }}
         >
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <AppBar
                 position="fixed"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
+                    p: 1,
                 }}
             >
                 <Toolbar>
@@ -315,8 +316,9 @@ function Dashboard(props) {
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    p: 3,
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    py: 4,
+                    px: { xs: 1, sm: 2, md: 3 },
                 }}
             >
                 <Toolbar />

@@ -2,7 +2,6 @@ import {
     Button,
     Card,
     CardActionArea,
-    CardContent,
     CardMedia,
     Container,
     Grid,

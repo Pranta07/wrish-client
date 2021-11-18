@@ -71,7 +71,7 @@ const MakeAdmin = () => {
                             </InputAdornment>
                         ),
                     }}
-                    sx={{ width: "50%", my: 2 }}
+                    sx={{ width: { xs: "80%", sm: "70%", md: "50%" }, my: 2 }}
                 />
                 <br />
                 <Button type="submit" variant="contained">

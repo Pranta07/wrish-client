@@ -70,7 +70,7 @@ const AddProduct = () => {
                     name="price"
                     sx={{
                         width: { xs: "90%", sm: "90%", md: "70%" },
-                        my: 1,
+                        mb: 1,
                         py: 1,
                     }}
                 />
@@ -83,7 +83,7 @@ const AddProduct = () => {
                     rows={4}
                     sx={{
                         width: { xs: "90%", sm: "90%", md: "70%" },
-                        my: 1,
+                        mb: 1,
                         py: 1,
                     }}
                 />
@@ -94,7 +94,7 @@ const AddProduct = () => {
                     label="Img URL"
                     sx={{
                         width: { xs: "90%", sm: "90%", md: "70%" },
-                        my: 1,
+                        mb: 1,
                         py: 1,
                     }}
                 />
