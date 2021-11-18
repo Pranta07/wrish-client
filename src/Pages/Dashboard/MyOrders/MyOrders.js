@@ -69,12 +69,7 @@ const MyOrders = () => {
     }, [user.email, isDelete]);
 
     return (
-        <Grid
-            // xs={10}
-            // sm={12}
-            // md={12}
-            sx={{ display: "flex", justifyContent: "center" }}
-        >
+        <Grid sx={{ display: "flex", justifyContent: "center" }}>
             <Box
                 sx={{
                     borderRadius: "5px",
@@ -83,7 +78,7 @@ const MyOrders = () => {
                     height: "80vh",
                     overflowX: "scroll",
                     width: {
-                        xs: "350px!important",
+                        xs: "300px!important",
                         sm: "500px!important",
                         md: "100%!important",
                     },

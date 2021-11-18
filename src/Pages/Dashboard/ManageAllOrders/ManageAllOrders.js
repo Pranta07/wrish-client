@@ -12,6 +12,7 @@ import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
 import Swal from "sweetalert2";
 import {
     Avatar,
+    Grid,
     IconButton,
     LinearProgress,
     Tooltip,
@@ -84,107 +85,119 @@ const ManageAllOrders = () => {
     }, [user.email, isUpdate]);
 
     return (
-        <Box
-            style={{
-                borderRadius: "5px",
-                backgroundColor: "#F4F8FF",
-                opacity: 0.93,
-                height: "85vh",
-                overflowX: "scroll",
-                margin: "0",
-            }}
-        >
-            <Typography variant="h4" sx={{ fontFamily: "Monospace", py: 1 }}>
-                Manage Orders
-            </Typography>
-            <hr />
-            {loading && (
-                <Box sx={{ width: "100%" }}>
-                    <LinearProgress />
-                </Box>
-            )}
-
-            {allOrders.length === 0 && !loading ? (
-                <Typography variant="h3" sx={{ my: 2 }}>
-                    No Orders Done Yet!
+        <Grid sx={{ display: "flex", justifyContent: "center" }}>
+            <Box
+                sx={{
+                    borderRadius: "5px",
+                    backgroundColor: "#F4F8FF",
+                    opacity: 0.93,
+                    height: "85vh",
+                    overflowX: "scroll",
+                    width: {
+                        xs: "300px!important",
+                        sm: "500px!important",
+                        md: "100%!important",
+                    },
+                }}
+            >
+                <Typography
+                    variant="h4"
+                    sx={{ fontFamily: "Monospace", py: 1 }}
+                >
+                    Manage Orders
                 </Typography>
-            ) : (
-                <TableContainer component={Paper}>
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>User</TableCell>
-                                <TableCell>Watch</TableCell>
-                                <TableCell align="right">Brand</TableCell>
-                                {/* <TableCell align="right">Price</TableCell> */}
-                                <TableCell align="right">Status</TableCell>
-                                <TableCell align="right">Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {allOrders?.map((order) => (
-                                <TableRow
-                                    key={order?._id}
-                                    sx={{
-                                        "&:last-child td, &:last-child th": {
-                                            border: 0,
-                                        },
-                                    }}
-                                >
-                                    <TableCell>{order?.name}</TableCell>
-                                    <TableCell component="th" scope="row">
-                                        <Avatar
-                                            alt="Remy Sharp"
-                                            src={order?.productImg}
-                                        />
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {order?.productName}
-                                    </TableCell>
-                                    {/* <TableCell align="right">
-                                        ${order?.productPrice}
-                                    </TableCell> */}
-                                    <TableCell align="right">
-                                        {order?.status ? "Shipped" : "Pending"}
-                                        {!order?.status ? (
-                                            <IconButton>
-                                                <Pending></Pending>
-                                            </IconButton>
-                                        ) : (
-                                            <Tooltip title="Shipped">
+                <hr />
+                {loading && (
+                    <Box sx={{ width: "100%" }}>
+                        <LinearProgress />
+                    </Box>
+                )}
+
+                {allOrders.length === 0 && !loading ? (
+                    <Typography variant="h3" sx={{ my: 2 }}>
+                        No Orders Done Yet!
+                    </Typography>
+                ) : (
+                    <TableContainer component={Paper}>
+                        <Table aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>User</TableCell>
+                                    <TableCell>Watch</TableCell>
+                                    <TableCell align="right">Brand</TableCell>
+                                    <TableCell align="right">Price</TableCell>
+                                    <TableCell align="right">Status</TableCell>
+                                    <TableCell align="right">Action</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {allOrders?.map((order) => (
+                                    <TableRow
+                                        key={order?._id}
+                                        sx={{
+                                            "&:last-child td, &:last-child th":
+                                                {
+                                                    border: 0,
+                                                },
+                                        }}
+                                    >
+                                        <TableCell>{order?.name}</TableCell>
+                                        <TableCell component="th" scope="row">
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src={order?.productImg}
+                                            />
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {order?.productName}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            ${order?.productPrice}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {order?.status
+                                                ? "Shipped"
+                                                : "Pending"}
+                                            {!order?.status ? (
                                                 <IconButton>
+                                                    <Pending></Pending>
+                                                </IconButton>
+                                            ) : (
+                                                <Tooltip title="Shipped">
+                                                    <IconButton>
+                                                        <LocalShippingRounded></LocalShippingRounded>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            )}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            <Tooltip title="Shipped">
+                                                <IconButton
+                                                    onClick={() =>
+                                                        handleShipped(order._id)
+                                                    }
+                                                >
                                                     <LocalShippingRounded></LocalShippingRounded>
                                                 </IconButton>
                                             </Tooltip>
-                                        )}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <Tooltip title="Shipped">
-                                            <IconButton
-                                                onClick={() =>
-                                                    handleShipped(order._id)
-                                                }
-                                            >
-                                                <LocalShippingRounded></LocalShippingRounded>
-                                            </IconButton>
-                                        </Tooltip>
-                                        <Tooltip title="Delete">
-                                            <IconButton
-                                                onClick={() =>
-                                                    handleDelete(order._id)
-                                                }
-                                            >
-                                                <Delete></Delete>
-                                            </IconButton>
-                                        </Tooltip>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            )}
-        </Box>
+                                            <Tooltip title="Delete">
+                                                <IconButton
+                                                    onClick={() =>
+                                                        handleDelete(order._id)
+                                                    }
+                                                >
+                                                    <Delete></Delete>
+                                                </IconButton>
+                                            </Tooltip>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                )}
+            </Box>
+        </Grid>
     );
 };
 
