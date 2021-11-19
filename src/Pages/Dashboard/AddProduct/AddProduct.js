@@ -1,21 +1,35 @@
-import { Button, Divider, TextField, Typography } from "@mui/material";
+import { Button, Divider, Input, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
 
 const AddProduct = () => {
     const [product, setProduct] = useState({});
+    const [image, setImage] = useState(null);
     const formRef = useRef();
+    // console.log(image);
 
     const handleAddProduct = (e) => {
         e.preventDefault();
         // console.log(product);
+
+        if (!image) return;
+
+        const formData = new FormData();
+        formData.append("name", product.name);
+        formData.append("price", product.price);
+        formData.append("desc", product.desc);
+        formData.append("img", image);
+
+        //https://frozen-inlet-30875.herokuapp.com/watches
+        //http://localhost:5000/watches
         fetch("https://frozen-inlet-30875.herokuapp.com/watches", {
             method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(product),
+            // headers: {
+            //     "content-type": "application/json",
+            // },
+            // body: JSON.stringify(product),
+            body: formData,
         })
             .then((res) => res.json())
             .then((result) => {
@@ -53,6 +67,7 @@ const AddProduct = () => {
             <Divider />
             <form onSubmit={handleAddProduct} ref={formRef}>
                 <TextField
+                    variant="standard"
                     required
                     onBlur={handleChange}
                     label="Product Name"
@@ -64,6 +79,7 @@ const AddProduct = () => {
                     }}
                 />
                 <TextField
+                    variant="standard"
                     required
                     onBlur={handleChange}
                     label="Product Price"
@@ -75,6 +91,7 @@ const AddProduct = () => {
                     }}
                 />
                 <TextField
+                    variant="standard"
                     required
                     onChange={handleChange}
                     name="desc"
@@ -87,11 +104,24 @@ const AddProduct = () => {
                         py: 1,
                     }}
                 />
-                <TextField
+                {/* <TextField
+                    variant="standard"
                     required
                     onBlur={handleChange}
                     name="img"
                     label="Img URL"
+                    sx={{
+                        width: { xs: "90%", sm: "90%", md: "70%" },
+                        mb: 1,
+                        py: 1,
+                    }}
+                />
+                <br /> */}
+                <Input
+                    required
+                    accept="image/*"
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
                     sx={{
                         width: { xs: "90%", sm: "90%", md: "70%" },
                         mb: 1,

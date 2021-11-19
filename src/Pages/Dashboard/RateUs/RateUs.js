@@ -1,4 +1,5 @@
 import { AccountCircle, MailOutline } from "@mui/icons-material";
+import SendIcon from "@mui/icons-material/Send";
 import {
     Button,
     Divider,
@@ -128,6 +129,7 @@ const RateUs = () => {
                         type="submit"
                         variant="contained"
                         sx={{ px: 4, my: 2, width: "20%" }}
+                        endIcon={<SendIcon />}
                     >
                         Submit
                     </Button>

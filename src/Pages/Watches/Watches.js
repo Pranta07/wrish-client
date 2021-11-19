@@ -65,6 +65,7 @@ const Watches = () => {
                                         <CardMedia
                                             className="card-img"
                                             component="img"
+                                            // image={`data:image/png;base64,${item.img}`}//showing base64 image
                                             image={item.img}
                                             alt="watch-image"
                                         />
