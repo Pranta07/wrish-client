@@ -8,7 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import useAuth from "../../../hooks/useAuth";
-import { Delete, LocalShippingRounded, Pending } from "@mui/icons-material";
+import {
+    Delete,
+    LocalShippingRounded,
+    Payment,
+    Pending,
+} from "@mui/icons-material";
 import Swal from "sweetalert2";
 import {
     Avatar,
@@ -18,6 +23,7 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -151,14 +157,26 @@ const MyOrders = () => {
                                                 </Tooltip>
                                             )}
                                         </TableCell>
-                                        <TableCell
-                                            onClick={() =>
-                                                handleDelete(order._id)
-                                            }
-                                            align="right"
-                                        >
+                                        <TableCell align="right">
+                                            {order.payment?.status ? (
+                                                "PAID"
+                                            ) : (
+                                                <Tooltip title="Pay">
+                                                    <Link
+                                                        to={`/dashboard/pay/${order._id}`}
+                                                    >
+                                                        <IconButton>
+                                                            <Payment></Payment>
+                                                        </IconButton>
+                                                    </Link>
+                                                </Tooltip>
+                                            )}
                                             <Tooltip title="Delete">
-                                                <IconButton>
+                                                <IconButton
+                                                    onClick={() =>
+                                                        handleDelete(order._id)
+                                                    }
+                                                >
                                                     <Delete></Delete>
                                                 </IconButton>
                                             </Tooltip>

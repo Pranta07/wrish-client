@@ -9,29 +9,33 @@ import {
 import Box from "@mui/material/Box";
 import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 const MakeAdmin = () => {
+    const { token } = useAuth();
+
     const [email, setEmail] = useState("");
     const handleChange = (e) => {
         setEmail(e.target.value);
     };
+
     const formRef = useRef();
     const handleSubmit = (e) => {
         e.preventDefault();
         formRef.current.reset();
 
         const user = { email };
-
         fetch("https://frozen-inlet-30875.herokuapp.com/users/admin", {
             method: "PUT",
             headers: {
+                authorization: `Bearer ${token}`,
                 "content-type": "application/json",
             },
             body: JSON.stringify(user),
         })
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
+                // console.log(result);
                 if (result.modifiedCount) {
                     Swal.fire("Admin", "Admin successfully made!", "success");
                 }

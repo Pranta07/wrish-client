@@ -14,7 +14,7 @@ const AdminRoute = ({ children, ...rest }) => {
         fetch(`https://frozen-inlet-30875.herokuapp.com/users/${user.email}`)
             .then((res) => res.json())
             .then((user) => {
-                console.log(user.role);
+                // console.log(user.role);
                 if (user.role === "admin") setAdmin(true);
             })
             .finally(() => setDone(true));

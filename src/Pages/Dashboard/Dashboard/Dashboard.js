@@ -9,7 +9,6 @@ import {
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -329,7 +328,7 @@ function Dashboard(props) {
                             {!admin ? <MyOrders></MyOrders> : <MakeAdmin />}
                         </Route>
                     )}
-                    <Route path={`${path}/pay`}>
+                    <Route path={`${path}/pay/:orderId`}>
                         <Pay></Pay>
                     </Route>
                     <Route path={`${path}/myOrders`}>

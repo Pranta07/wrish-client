@@ -7,6 +7,7 @@ import {
     updateProfile,
     GoogleAuthProvider,
     signInWithPopup,
+    getIdToken,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -18,6 +19,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+    const [token, setToken] = useState("");
 
     const auth = getAuth();
     const handleRegister = (name, email, password, history) => {
@@ -128,6 +130,10 @@ const useFirebase = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                getIdToken(user).then((idToken) => {
+                    // console.log(idToken);
+                    setToken(idToken);
+                });
             } else {
                 setUser({});
             }
@@ -145,6 +151,7 @@ const useFirebase = () => {
         loading,
         error,
         setError,
+        token,
     };
 };
 
