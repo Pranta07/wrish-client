@@ -1,6 +1,6 @@
 # WRISH WATCH
 
-Live Preview [Wrish Watch](https://).
+Live Preview [Wrish Watch](https://wrish-c74d2.web.app/).
 
 ## Features
 
