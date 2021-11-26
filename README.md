@@ -4,11 +4,10 @@ Live Preview [Wrish Watch](https://).
 
 ## Features
 
--   Watch Of Top Brands
--   Men and Women Categories
--   User Dashboard is provided
--   Users can see their orders
--   Review Options for users
--   An admin will manage all orders
--   An admin can also make another admin
--   Managing all Products is also done by admin
+-   Responsive website with a watch gallery of different brands watches.
+-   Dashboard with private functionalities for users and admin.
+-   Payment, Orders and Review options for users.
+-   An admin will manage all orders and products as well as can make another admin.
+-   Firebase Authentication by Email/Password method.
+-   Admin routes are secured using json web token.
+-   Stripe International Payment Gateway system.
