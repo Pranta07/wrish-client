@@ -27,12 +27,12 @@ const Gallery = () => {
     };
 
     const imgUrls = [
-        "https://i.ibb.co/8bdtSpw/marcin-nowak-yd3-Gxapk-Wi-M-unsplash.jpg",
-        "https://i.ibb.co/s3yns7Z/matt-brett-5-Nhqzpj-V-zc-unsplash.jpg",
-        "https://i.ibb.co/xfnZTPp/klickors-moe-1-Cji-CJg-HOOY-unsplash.jpg",
-        "https://i.ibb.co/TvCZ4cP/hans-gaber-x-BEn77-CZ8-Q-unsplash.jpg",
-        "https://i.ibb.co/rQTgMJ1/joppe-spaa-bo3-KAZHZw-Ik-unsplash.jpg",
-        "https://i.ibb.co/8PCC2bP/jorg-helberg-Jy-ICT-Cnbec-unsplash.jpg",
+        "https://i.ibb.co/b54L9rK/rsz-marcin-nowak-yd3gxapkwim-unsplash.jpg",
+        "https://i.ibb.co/DrCjb2n/matt-brett-5-Nhqzpj-V-zc-unsplash.jpg",
+        "https://i.ibb.co/dj6vKCj/klickors-moe-1-Cji-CJg-HOOY-unsplash.jpg",
+        "https://i.ibb.co/qNgk46H/hans-gaber-x-BEn77-CZ8-Q-unsplash.jpg",
+        "https://i.ibb.co/XxKhs9j/joppe-spaa-bo3-KAZHZw-Ik-unsplash.jpg",
+        "https://i.ibb.co/SvrSmXC/jorg-helberg-Jy-ICT-Cnbec-unsplash.jpg",
     ];
 
     return (
