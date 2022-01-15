@@ -11,7 +11,7 @@ const Banner = () => {
             subtitle: "Timeless & Elegant",
             description:
                 "Complete your everyday look with a classic leather strap watch!",
-            bgImg: "https://i.ibb.co/Ry2s177/vitae-london-8-BOZ2-Tx-O2l-Q-unsplash.jpg",
+            bgImg: "https://i.ibb.co/my4Qks2/vitae-london-8-BOZ2-Tx-O2l-Q-unsplash.jpg",
         },
         {
             id: 2,
@@ -19,7 +19,7 @@ const Banner = () => {
             subtitle: "Timeless & Elegant",
             description:
                 "Complete your everyday look with a classic leather strap watch!",
-            bgImg: "https://i.ibb.co/5LsWnNz/vitae-london-pm-XO831uv-PU-unsplash.jpg",
+            bgImg: "https://i.ibb.co/n8v7scV/vitae-london-pm-XO831uv-PU-unsplash.jpg",
         },
         {
             id: 3,
@@ -27,7 +27,7 @@ const Banner = () => {
             subtitle: "Timeless & Elegant",
             description:
                 "Complete your everyday look with a classic leather strap watch!",
-            bgImg: "https://i.ibb.co/FB21gnX/bradley-ziffer-e-AOl9-QREIY0-unsplash.jpg",
+            bgImg: "https://i.ibb.co/9n0Vx6s/bradley-ziffer-e-AOl9-QREIY0-unsplash.jpg",
         },
     ];
 

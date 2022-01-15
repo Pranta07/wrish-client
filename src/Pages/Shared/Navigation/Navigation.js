@@ -1,9 +1,13 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Login } from "@mui/icons-material";
+import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import {
     Avatar,
     CssBaseline,
@@ -11,11 +15,6 @@ import {
     useMediaQuery,
     useTheme,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
-import { useHistory } from "react-router-dom";
-import DrawerComponent from "../DrawerComponent/DrawerComponent";
-import { Login } from "@mui/icons-material";
 
 const Navigation = () => {
     const { user, handleSignOut } = useAuth();
