@@ -14,23 +14,36 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import Stack from "@mui/material/Stack";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 import Navigation from "../Shared/Navigation/Navigation";
 import Footer from "../Shared/Footer/Footer";
 
 const Watches = () => {
+    const [count, setCount] = useState(0);
+    const [page, setPage] = useState(1);
     const [watches, setWatches] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
+
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/watches/all`)
+        fetch(`http://localhost:5000/watches?page=${page}`)
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
-                setWatches(data);
+                setWatches(data.products);
+                setCount(Math.ceil(data.count / 4));
                 setIsLoading(false);
             });
-    }, []);
+    }, [page]);
+
     return (
         <Box>
             <Navigation></Navigation>
@@ -137,6 +150,25 @@ const Watches = () => {
                             </Grid>
                         ))}
                     </Grid>
+                </Box>
+
+                <Box sx={{ display: "flex", justifyContent: "center", my: 3 }}>
+                    <Stack spacing={2}>
+                        <Pagination
+                            count={count}
+                            renderItem={(item) => (
+                                <PaginationItem
+                                    components={{
+                                        previous: ArrowBackIcon,
+                                        next: ArrowForwardIcon,
+                                    }}
+                                    {...item}
+                                />
+                            )}
+                            page={page}
+                            onChange={handleChange}
+                        />
+                    </Stack>
                 </Box>
             </Container>
             <Footer></Footer>
