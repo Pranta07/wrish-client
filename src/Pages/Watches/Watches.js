@@ -35,7 +35,7 @@ const Watches = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:5000/watches?page=${page}`)
+        fetch(`https://frozen-inlet-30875.herokuapp.com/watches?page=${page}`)
             .then((res) => res.json())
             .then((data) => {
                 setWatches(data.products);
