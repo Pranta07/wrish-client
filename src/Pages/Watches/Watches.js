@@ -34,6 +34,7 @@ const Watches = () => {
     };
 
     useEffect(() => {
+        setWatches([]);
         setIsLoading(true);
         fetch(`https://frozen-inlet-30875.herokuapp.com/watches?page=${page}`)
             .then((res) => res.json())
@@ -61,7 +62,13 @@ const Watches = () => {
                     <hr />
                 </Box>
                 {isLoading && (
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            mb: 2,
+                        }}
+                    >
                         <CircularProgress />
                     </Box>
                 )}
