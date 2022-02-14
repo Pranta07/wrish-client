@@ -61,11 +61,12 @@ const Purchase = () => {
             .then((result) => {
                 if (result.insertedId) {
                     Swal.fire({
+                        icon: "success",
                         title: product.name,
-                        imageUrl: product.img,
+                        /* imageUrl: product.img,
                         imageWidth: 300,
                         imageHeight: 200,
-                        imageAlt: "Custom image",
+                        imageAlt: "Custom image", */
                         text: "Your Order Placed Successfully",
                         timer: 2000,
                         showConfirmButton: false,
