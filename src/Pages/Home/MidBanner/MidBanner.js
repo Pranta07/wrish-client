@@ -1,6 +1,7 @@
 import { Button, Paper, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MidBanner = () => {
     const style = {
@@ -42,10 +43,11 @@ const MidBanner = () => {
                     >
                         BE THE FIRST TO GET LIMITED EDITIONS
                     </Box>
-
-                    <Button variant="contained" sx={{ px: 4, py: 1 }}>
-                        Shop Now
-                    </Button>
+                    <Link to="/watches" style={{ textDecoration: "none" }}>
+                        <Button variant="contained" sx={{ px: 4, py: 1 }}>
+                            Shop Now
+                        </Button>
+                    </Link>
                 </Typography>
             </Paper>
         </Box>
