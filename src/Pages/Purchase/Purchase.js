@@ -165,6 +165,7 @@ const Purchase = () => {
 
                             <form onSubmit={handlePlaceOrder} ref={formRef}>
                                 <TextField
+                                    required
                                     onBlur={handleChange}
                                     disabled
                                     defaultValue={user.displayName}
@@ -188,6 +189,7 @@ const Purchase = () => {
                                 />
                                 <TextField
                                     disabled
+                                    required
                                     onBlur={handleChange}
                                     defaultValue={user.email}
                                     label="Email"
@@ -211,6 +213,7 @@ const Purchase = () => {
                                 />
                                 <TextField
                                     onBlur={handleChange}
+                                    required
                                     name="address"
                                     label="Address"
                                     variant="standard"
@@ -232,6 +235,7 @@ const Purchase = () => {
                                 />
                                 <TextField
                                     onBlur={handleChange}
+                                    required
                                     name="phone"
                                     label="Phone"
                                     variant="standard"
