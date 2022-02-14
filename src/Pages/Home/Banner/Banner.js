@@ -3,6 +3,7 @@ import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 const Banner = () => {
     const items = [
         {
@@ -82,9 +83,11 @@ const Banner = () => {
                         >
                             {item.description}
                         </Box>
-                        <Button variant="contained" sx={{ px: 4, py: 1 }}>
-                            Shop Now
-                        </Button>
+                        <Link to="/watches" style={{ textDecoration: "none" }}>
+                            <Button variant="contained" sx={{ px: 4, py: 1 }}>
+                                Shop Now
+                            </Button>
+                        </Link>
                     </Typography>
                 </Paper>
             ))}
