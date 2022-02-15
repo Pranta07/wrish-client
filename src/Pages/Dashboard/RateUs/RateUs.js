@@ -59,7 +59,14 @@ const RateUs = () => {
             });
     };
     return (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+            sx={{
+                height: "550px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             <Box
                 sx={{
                     border: "1px solid gray",
