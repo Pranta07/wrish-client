@@ -44,8 +44,8 @@ const Navigation = () => {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                // border: "1px solid red",
                                 width: "100%",
+                                marginX: 6,
                             }}
                         >
                             <Box sx={{ mx: 2 }}>
@@ -54,6 +54,8 @@ const Navigation = () => {
                                     style={{
                                         textDecoration: "none",
                                         color: "white",
+                                        fontFamily: "monospace",
+                                        fontSize: 18,
                                     }}
                                 >
                                     Home
@@ -65,6 +67,8 @@ const Navigation = () => {
                                     style={{
                                         textDecoration: "none",
                                         color: "white",
+                                        fontFamily: "monospace",
+                                        fontSize: 18,
                                     }}
                                 >
                                     Watches
@@ -77,6 +81,8 @@ const Navigation = () => {
                                         style={{
                                             textDecoration: "none",
                                             color: "white",
+                                            fontFamily: "monospace",
+                                            fontSize: 18,
                                         }}
                                     >
                                         Dashboard
@@ -95,6 +101,8 @@ const Navigation = () => {
                                         style={{
                                             textDecoration: "none",
                                             color: "white",
+                                            fontFamily: "monospace",
+                                            fontSize: 18,
                                         }}
                                     >
                                         <IconButton>
@@ -112,7 +120,13 @@ const Navigation = () => {
                                         mr: 3,
                                     }}
                                 >
-                                    <Typography sx={{ typography: "body2" }}>
+                                    <Typography
+                                        sx={{
+                                            typography: "body2",
+                                            fontFamily: "monospace",
+                                            fontSize: 18,
+                                        }}
+                                    >
                                         {user.displayName}
                                     </Typography>
                                     <Avatar
