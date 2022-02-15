@@ -45,6 +45,8 @@ function DrawerComponent() {
                                 style={{
                                     textDecoration: "none",
                                     color: "blueviolet",
+                                    fontFamily: "monospace",
+                                    fontSize: 18,
                                 }}
                             >
                                 Home
@@ -61,6 +63,8 @@ function DrawerComponent() {
                                 style={{
                                     textDecoration: "none",
                                     color: "blueviolet",
+                                    fontFamily: "monospace",
+                                    fontSize: 18,
                                 }}
                             >
                                 Watches
@@ -78,6 +82,8 @@ function DrawerComponent() {
                                     style={{
                                         textDecoration: "none",
                                         color: "blueviolet",
+                                        fontFamily: "monospace",
+                                        fontSize: 18,
                                     }}
                                 >
                                     Dashboard
@@ -98,6 +104,8 @@ function DrawerComponent() {
                                     style={{
                                         textDecoration: "none",
                                         color: "blueviolet",
+                                        fontFamily: "monospace",
+                                        fontSize: 18,
                                     }}
                                 >
                                     Login
