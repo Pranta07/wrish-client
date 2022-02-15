@@ -15,15 +15,28 @@ import {
     Grid,
     IconButton,
     LinearProgress,
+    TablePagination,
     Tooltip,
     Typography,
 } from "@mui/material";
 
 const ManageAllOrders = () => {
+    const { user } = useAuth();
     const [allOrders, setAllOrders] = useState([]);
     const [isUpdate, steIsUpdate] = useState(false);
     const [loading, setLoading] = useState(true);
-    const { user } = useAuth();
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [count, setCount] = useState(0);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value));
+        setPage(0);
+    };
 
     const handleShipped = (id) => {
         steIsUpdate(false);
@@ -75,14 +88,17 @@ const ManageAllOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/manage/orders`)
+        fetch(
+            `https://frozen-inlet-30875.herokuapp.com/manage/orders?page=${page}&&rows=${rowsPerPage}`
+        )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                setAllOrders(data);
+                // console.log(data);
+                setAllOrders(data.orders);
+                setCount(data.count);
             })
             .finally(() => setLoading(false));
-    }, [user.email, isUpdate]);
+    }, [user.email, isUpdate, page, rowsPerPage]);
 
     return (
         <Grid sx={{ display: "flex", justifyContent: "center" }}>
@@ -91,10 +107,10 @@ const ManageAllOrders = () => {
                     borderRadius: "5px",
                     backgroundColor: "#F4F8FF",
                     opacity: 0.93,
-                    height: "85vh",
+                    height: "80vh",
                     overflowX: "scroll",
                     width: {
-                        xs: "300px!important",
+                        xs: "315px!important",
                         sm: "500px!important",
                         md: "100%!important",
                     },
@@ -118,83 +134,108 @@ const ManageAllOrders = () => {
                         No Orders Done Yet!
                     </Typography>
                 ) : (
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>User</TableCell>
-                                    <TableCell>Watch</TableCell>
-                                    <TableCell align="right">Brand</TableCell>
-                                    <TableCell align="right">Price</TableCell>
-                                    <TableCell align="right">Status</TableCell>
-                                    <TableCell align="right">Action</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {allOrders?.map((order) => (
-                                    <TableRow
-                                        key={order?._id}
-                                        sx={{
-                                            "&:last-child td, &:last-child th":
-                                                {
-                                                    border: 0,
-                                                },
-                                        }}
-                                    >
-                                        <TableCell>{order?.name}</TableCell>
-                                        <TableCell component="th" scope="row">
-                                            <Avatar
-                                                alt="Remy Sharp"
-                                                src={order?.productImg}
-                                            />
+                    <>
+                        <TableContainer component={Paper}>
+                            <Table aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>User</TableCell>
+                                        <TableCell>Watch</TableCell>
+                                        <TableCell align="right">
+                                            Brand
                                         </TableCell>
                                         <TableCell align="right">
-                                            {order?.productName}
+                                            Price
                                         </TableCell>
                                         <TableCell align="right">
-                                            ${order?.productPrice}
+                                            Status
                                         </TableCell>
                                         <TableCell align="right">
-                                            {order?.status
-                                                ? "Shipped"
-                                                : "Pending"}
-                                            {!order?.status ? (
-                                                <IconButton>
-                                                    <Pending></Pending>
-                                                </IconButton>
-                                            ) : (
-                                                <Tooltip title="Shipped">
+                                            Action
+                                        </TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {allOrders?.map((order) => (
+                                        <TableRow
+                                            key={order?._id}
+                                            sx={{
+                                                "&:last-child td, &:last-child th":
+                                                    {
+                                                        border: 0,
+                                                    },
+                                            }}
+                                        >
+                                            <TableCell>{order?.name}</TableCell>
+                                            <TableCell
+                                                component="th"
+                                                scope="row"
+                                            >
+                                                <Avatar
+                                                    alt="Remy Sharp"
+                                                    src={order?.productImg}
+                                                />
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                {order?.productName}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                ${order?.productPrice}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                {order?.status
+                                                    ? "Shipped"
+                                                    : "Pending"}
+                                                {!order?.status ? (
                                                     <IconButton>
+                                                        <Pending></Pending>
+                                                    </IconButton>
+                                                ) : (
+                                                    <Tooltip title="Shipped">
+                                                        <IconButton>
+                                                            <LocalShippingRounded></LocalShippingRounded>
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                )}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <Tooltip title="Shipped">
+                                                    <IconButton
+                                                        onClick={() =>
+                                                            handleShipped(
+                                                                order._id
+                                                            )
+                                                        }
+                                                    >
                                                         <LocalShippingRounded></LocalShippingRounded>
                                                     </IconButton>
                                                 </Tooltip>
-                                            )}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            <Tooltip title="Shipped">
-                                                <IconButton
-                                                    onClick={() =>
-                                                        handleShipped(order._id)
-                                                    }
-                                                >
-                                                    <LocalShippingRounded></LocalShippingRounded>
-                                                </IconButton>
-                                            </Tooltip>
-                                            <Tooltip title="Delete">
-                                                <IconButton
-                                                    onClick={() =>
-                                                        handleDelete(order._id)
-                                                    }
-                                                >
-                                                    <Delete></Delete>
-                                                </IconButton>
-                                            </Tooltip>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                                <Tooltip title="Delete">
+                                                    <IconButton
+                                                        onClick={() =>
+                                                            handleDelete(
+                                                                order._id
+                                                            )
+                                                        }
+                                                    >
+                                                        <Delete></Delete>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <TablePagination
+                            component="div"
+                            count={count}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            rowsPerPage={rowsPerPage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </>
                 )}
             </Box>
         </Grid>
