@@ -22,10 +22,11 @@ const TopProducts = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/watches?page=1`)
+        fetch(
+            `https://frozen-inlet-30875.herokuapp.com/watches?page=1&&productCount=4`
+        )
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
                 setWatches(data.products);
                 setIsLoading(false);
             });
