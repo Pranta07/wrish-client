@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Login } from "@mui/icons-material";
+import { Login, Logout } from "@mui/icons-material";
 import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import {
     Avatar,
@@ -138,7 +138,7 @@ const Navigation = () => {
                                         onClick={() => handleSignOut(history)}
                                         variant="contained"
                                     >
-                                        Logout
+                                        <Logout></Logout> Logout
                                     </Button>
                                 </Box>
                             )}
