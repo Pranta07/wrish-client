@@ -16,6 +16,14 @@ import {
     useTheme,
 } from "@mui/material";
 
+const publicNavItems = [
+    { name: "Home", to: "/" },
+    { name: "Watches", to: "/watches" },
+    { name: "Blogs", to: "/blogs" },
+    { name: "About Us", to: "/about" },
+    { name: "Contact", to: "/contact" },
+];
+
 const Navigation = () => {
     const { user, handleSignOut } = useAuth();
     const history = useHistory();
@@ -48,32 +56,25 @@ const Navigation = () => {
                                 marginX: 6,
                             }}
                         >
-                            <Box sx={{ mx: 2 }}>
-                                <Link
-                                    to="/home"
-                                    style={{
-                                        textDecoration: "none",
-                                        color: "white",
-                                        fontFamily: "monospace",
-                                        fontSize: 18,
+                            {publicNavItems.map((item) => (
+                                <Box
+                                    sx={{
+                                        px: 2,
                                     }}
                                 >
-                                    Home
-                                </Link>
-                            </Box>
-                            <Box sx={{ mx: 1 }}>
-                                <Link
-                                    to="/watches"
-                                    style={{
-                                        textDecoration: "none",
-                                        color: "white",
-                                        fontFamily: "monospace",
-                                        fontSize: 18,
-                                    }}
-                                >
-                                    Watches
-                                </Link>
-                            </Box>
+                                    <Link
+                                        to={item.to}
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "white",
+                                            fontFamily: "monospace",
+                                            fontSize: 18,
+                                        }}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </Box>
+                            ))}
                             {user.email && (
                                 <Box sx={{ mx: 1 }}>
                                     <Link
@@ -117,11 +118,14 @@ const Navigation = () => {
                                         display: "flex",
                                         alignItems: "center",
                                         ml: "auto",
-                                        mr: 3,
                                     }}
                                 >
                                     <Typography
                                         sx={{
+                                            display: {
+                                                md: "none",
+                                                lg: "block",
+                                            },
                                             typography: "body2",
                                             fontFamily: "monospace",
                                             fontSize: 18,

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useHistory } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
 import {
     Divider,
     Drawer,
@@ -13,12 +11,25 @@ import {
 } from "@mui/material";
 import {
     Home,
+    Menu,
     Login,
     Logout,
     Person,
     Watch,
     Dashboard,
+    ContactPage,
+    Description,
+    Article,
 } from "@mui/icons-material";
+import useAuth from "../../../hooks/useAuth";
+
+const publicListItems = [
+    { name: "Home", icon: <Home></Home>, to: "/" },
+    { name: "Watches", icon: <Watch></Watch>, to: "/watches" },
+    { name: "Blogs", icon: <Article></Article>, to: "/blogs" },
+    { name: "About Us", icon: <Description></Description>, to: "/about" },
+    { name: "Contact", icon: <ContactPage></ContactPage>, to: "/contact" },
+];
 
 function DrawerComponent() {
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -31,46 +42,29 @@ function DrawerComponent() {
                 sx={{ ml: "auto" }}
                 onClick={() => setOpenDrawer(!openDrawer)}
             >
-                <MenuIcon></MenuIcon>
+                <Menu></Menu>
             </IconButton>
             <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
                 <List>
-                    <ListItem onClick={() => setOpenDrawer(false)}>
-                        <ListItemIcon>
-                            <Home></Home>
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Link
-                                to="/"
-                                style={{
-                                    textDecoration: "none",
-                                    color: "blueviolet",
-                                    fontFamily: "monospace",
-                                    fontSize: 18,
-                                }}
-                            >
-                                Home
-                            </Link>
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem onClick={() => setOpenDrawer(false)}>
-                        <ListItemIcon>
-                            <Watch></Watch>
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Link
-                                to="/watches"
-                                style={{
-                                    textDecoration: "none",
-                                    color: "blueviolet",
-                                    fontFamily: "monospace",
-                                    fontSize: 18,
-                                }}
-                            >
-                                Watches
-                            </Link>
-                        </ListItemText>
-                    </ListItem>
+                    {publicListItems.map((item) => (
+                        <ListItem onClick={() => setOpenDrawer(false)}>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText>
+                                <Link
+                                    to={item.to}
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "blueviolet",
+                                        fontFamily: "monospace",
+                                        fontSize: 18,
+                                    }}
+                                >
+                                    {item.name}
+                                </Link>
+                            </ListItemText>
+                        </ListItem>
+                    ))}
+
                     {user.email && (
                         <ListItem onClick={() => setOpenDrawer(false)}>
                             <ListItemIcon>
