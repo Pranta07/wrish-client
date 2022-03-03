@@ -14,6 +14,7 @@ import {
     TextField,
 } from "@mui/material";
 import {
+    Google,
     Lock,
     MailOutline,
     Person,
@@ -25,7 +26,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
     const [registerInfo, setRegisterInfo] = useState({});
     const [show, setShow] = useState(false);
-    const { handleRegister, error, setError } = useAuth();
+    const { handleRegister, handleGoogleSignIn, error, setError } = useAuth();
 
     const history = useHistory();
 
@@ -199,6 +200,23 @@ const Register = () => {
                             Already Has An Acount?
                         </Button>
                     </Link>
+                    <br />
+                    <Box
+                        sx={{
+                            letterSpacing: 2,
+                            lineHeight: "normal",
+                            fontSize: "small",
+                        }}
+                    >
+                        .......or Sign-up with.......
+                    </Box>
+                    <Button
+                        onClick={() => handleGoogleSignIn({}, history)}
+                        variant="text"
+                        sx={{ px: 5, my: 1 }}
+                    >
+                        <Google></Google>
+                    </Button>
                 </Box>
             </Grid>
         </Grid>
