@@ -14,6 +14,7 @@ import {
     TextField,
 } from "@mui/material";
 import {
+    Google,
     Lock,
     MailOutline,
     Visibility,
@@ -24,7 +25,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
     const [show, setShow] = useState(false);
-    const { handleSignIn, error, setError } = useAuth();
+    const { handleSignIn, handleGoogleSignIn, error, setError } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -162,6 +163,23 @@ const Login = () => {
                             Create An Acount
                         </Button>
                     </Link>
+                    <br />
+                    <Box
+                        sx={{
+                            letterSpacing: 2,
+                            lineHeight: "normal",
+                            fontSize: "small",
+                        }}
+                    >
+                        .......or Sign-up with.......
+                    </Box>
+                    <Button
+                        onClick={() => handleGoogleSignIn(location, history)}
+                        variant="text"
+                        sx={{ px: 5, my: 1 }}
+                    >
+                        <Google></Google>
+                    </Button>
                 </Box>
             </Grid>
         </Grid>

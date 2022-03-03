@@ -76,9 +76,11 @@ const useFirebase = () => {
 
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // const user = result.user;
+                const { displayName, email } = result.user;
+                setUser(result.user);
+                saveUser(displayName, email); //save user info to db
                 setError("");
-                history.push(location?.state?.from);
+                history.push(location?.state?.from || "/");
             })
             .catch((error) => {
                 setError(error.message);
