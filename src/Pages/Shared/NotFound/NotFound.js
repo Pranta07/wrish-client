@@ -19,6 +19,7 @@ const NotFound = () => {
                     component="div"
                     gutterBottom
                     sx={{
+                        mt: 6,
                         fontWeight: "bold",
                         fontFamily: "Monospace",
                     }}
