@@ -50,7 +50,7 @@ const Banner = () => {
                         justifyContent: "center",
                     }}
                 >
-                    <Typography component="div">
+                    <Typography component="div" sx={{ mx: 1 }}>
                         <Box
                             sx={{
                                 letterSpacing: 2,
