@@ -8,6 +8,11 @@ const Footer = () => {
         typography: "body2",
         lineHeight: 2,
         color: "text.secondary",
+        "&:hover": {
+            color: "black",
+            cursor: "pointer",
+            transition: "0.15s ease-in-out",
+        },
     };
     return (
         <Box>
