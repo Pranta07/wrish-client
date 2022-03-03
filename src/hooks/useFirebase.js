@@ -49,7 +49,7 @@ const useFirebase = () => {
 
     const handleSignIn = (email, password, location, history) => {
         setLoading(true);
-        console.log(email, password);
+        // console.log(email, password);
         signInWithEmailAndPassword(auth, email, password)
             .then((Result) => {
                 // Signed in
