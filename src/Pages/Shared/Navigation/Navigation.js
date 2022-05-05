@@ -19,7 +19,7 @@ import {
 const publicNavItems = [
     { name: "Home", to: "/" },
     { name: "Watches", to: "/watches" },
-    { name: "Blogs", to: "/blogs" },
+    // { name: "Blogs", to: "/blogs" },
     { name: "About Us", to: "/about" },
     { name: "Contact", to: "/contact" },
 ];

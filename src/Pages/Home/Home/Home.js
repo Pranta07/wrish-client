@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import Page from "../../Page/Page";
 import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
@@ -11,16 +12,18 @@ import UserReviews from "../UserReviews/UserReviews";
 
 const Home = () => {
     return (
-        <Box>
-            <Navigation></Navigation>
-            <Banner></Banner>
-            <TopProducts></TopProducts>
-            <MidBanner></MidBanner>
-            <Gallery></Gallery>
-            <UserReviews></UserReviews>
-            <Brands></Brands>
-            <Footer></Footer>
-        </Box>
+        <Page title="Home">
+            <Box>
+                <Navigation></Navigation>
+                <Banner></Banner>
+                <TopProducts></TopProducts>
+                <MidBanner></MidBanner>
+                <Gallery></Gallery>
+                <UserReviews></UserReviews>
+                <Brands></Brands>
+                <Footer></Footer>
+            </Box>
+        </Page>
     );
 };
 

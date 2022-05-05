@@ -21,6 +21,7 @@ import { Description, MailOutline, Phone } from "@mui/icons-material";
 import Swal from "sweetalert2";
 import Navigation from "../Shared/Navigation/Navigation";
 import Footer from "../Shared/Footer/Footer";
+import Page from "../Page/Page";
 
 const Purchase = () => {
     const [product, setProduct] = useState();
@@ -84,193 +85,197 @@ const Purchase = () => {
     };
 
     return (
-        <Box>
-            <Navigation />
-            <Container>
-                <Grid
-                    container
-                    spacing={{ xs: 2, md: 3 }}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
-                >
-                    <Grid item xs={4} sm={8} md={6}>
-                        <Card
-                            sx={{
-                                // display: "grid",
-                                // gridTemplateColumns: "repeat(2,1fr)",
-                                boxShadow: 1,
-                                padding: "16px",
-                                my: 3,
-                            }}
-                        >
-                            <Box>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="400"
-                                        image={product?.img}
-                                        alt="watch"
-                                    />
-                                    <ImageListItemBar
-                                        title={
-                                            <Typography
-                                                variant="h4"
-                                                sx={{
-                                                    fontFamily: "Monospace",
-                                                    py: 1,
-                                                }}
-                                            >
-                                                {product?.name.toUpperCase()}
-                                            </Typography>
-                                        }
-                                        position="bottom"
-                                        actionIcon={
-                                            <Box sx={{ marginLeft: "10px" }}>
-                                                <FavoriteIcon
+        <Page title="Purchase">
+            <Box>
+                <Navigation />
+                <Container>
+                    <Grid
+                        container
+                        spacing={{ xs: 2, md: 3 }}
+                        columns={{ xs: 4, sm: 8, md: 12 }}
+                    >
+                        <Grid item xs={4} sm={8} md={6}>
+                            <Card
+                                sx={{
+                                    // display: "grid",
+                                    // gridTemplateColumns: "repeat(2,1fr)",
+                                    boxShadow: 1,
+                                    padding: "16px",
+                                    my: 3,
+                                }}
+                            >
+                                <Box>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            height="400"
+                                            image={product?.img}
+                                            alt="watch"
+                                        />
+                                        <ImageListItemBar
+                                            title={
+                                                <Typography
+                                                    variant="h4"
                                                     sx={{
-                                                        color: "white",
-                                                        width: "40px",
-                                                        height: "40px",
+                                                        fontFamily: "Monospace",
+                                                        py: 1,
                                                     }}
-                                                />
-                                            </Box>
-                                        }
-                                        actionPosition="left"
-                                    />
-                                </CardActionArea>
-                            </Box>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={4} sm={8} md={6}>
-                        <Box sx={{ m: 5 }}>
-                            <Typography
-                                component="div"
-                                variant="h4"
-                                sx={{ fontFamily: "Monospace" }}
-                            >
-                                Price: ${product?.price}
-                            </Typography>
-                            <hr />
-                            <Typography
-                                variant="subtitle1"
-                                component="div"
-                                color="text.secondary"
-                            >
-                                {product?.desc.slice(0, 80)}
-                            </Typography>
-                            <Rating
-                                name="read-only"
-                                value={4}
-                                readOnly
-                                size="small"
-                            />
-
-                            <form onSubmit={handlePlaceOrder} ref={formRef}>
-                                <TextField
-                                    required
-                                    onBlur={handleChange}
-                                    disabled
-                                    defaultValue={user.displayName}
-                                    label="Name"
-                                    name="name"
-                                    variant="standard"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <AccountCircle />
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    sx={{
-                                        width: {
-                                            xs: "90%",
-                                            sm: "80%",
-                                            md: "70%",
-                                        },
-                                    }}
-                                />
-                                <TextField
-                                    disabled
-                                    required
-                                    onBlur={handleChange}
-                                    defaultValue={user.email}
-                                    label="Email"
-                                    name="email"
-                                    variant="standard"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <MailOutline></MailOutline>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    sx={{
-                                        width: {
-                                            xs: "90%",
-                                            sm: "80%",
-                                            md: "70%",
-                                        },
-                                        my: 1,
-                                    }}
-                                />
-                                <TextField
-                                    onBlur={handleChange}
-                                    required
-                                    name="address"
-                                    label="Address"
-                                    variant="standard"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <Description></Description>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    sx={{
-                                        width: {
-                                            xs: "90%",
-                                            sm: "80%",
-                                            md: "70%",
-                                        },
-                                        my: 1,
-                                    }}
-                                />
-                                <TextField
-                                    onBlur={handleChange}
-                                    required
-                                    name="phone"
-                                    label="Phone"
-                                    variant="standard"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <Phone></Phone>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    sx={{
-                                        width: {
-                                            xs: "90%",
-                                            sm: "80%",
-                                            md: "70%",
-                                        },
-                                        my: 1,
-                                    }}
-                                />
-                                <br />
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{ my: 2 }}
+                                                >
+                                                    {product?.name.toUpperCase()}
+                                                </Typography>
+                                            }
+                                            position="bottom"
+                                            actionIcon={
+                                                <Box
+                                                    sx={{ marginLeft: "10px" }}
+                                                >
+                                                    <FavoriteIcon
+                                                        sx={{
+                                                            color: "white",
+                                                            width: "40px",
+                                                            height: "40px",
+                                                        }}
+                                                    />
+                                                </Box>
+                                            }
+                                            actionPosition="left"
+                                        />
+                                    </CardActionArea>
+                                </Box>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={4} sm={8} md={6}>
+                            <Box sx={{ m: 5 }}>
+                                <Typography
+                                    component="div"
+                                    variant="h4"
+                                    sx={{ fontFamily: "Monospace" }}
                                 >
-                                    Place Order
-                                </Button>
-                            </form>
-                        </Box>
+                                    Price: ${product?.price}
+                                </Typography>
+                                <hr />
+                                <Typography
+                                    variant="subtitle1"
+                                    component="div"
+                                    color="text.secondary"
+                                >
+                                    {product?.desc.slice(0, 80)}
+                                </Typography>
+                                <Rating
+                                    name="read-only"
+                                    value={4}
+                                    readOnly
+                                    size="small"
+                                />
+
+                                <form onSubmit={handlePlaceOrder} ref={formRef}>
+                                    <TextField
+                                        required
+                                        onBlur={handleChange}
+                                        disabled
+                                        defaultValue={user.displayName}
+                                        label="Name"
+                                        name="name"
+                                        variant="standard"
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <AccountCircle />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        sx={{
+                                            width: {
+                                                xs: "90%",
+                                                sm: "80%",
+                                                md: "70%",
+                                            },
+                                        }}
+                                    />
+                                    <TextField
+                                        disabled
+                                        required
+                                        onBlur={handleChange}
+                                        defaultValue={user.email}
+                                        label="Email"
+                                        name="email"
+                                        variant="standard"
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <MailOutline></MailOutline>
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        sx={{
+                                            width: {
+                                                xs: "90%",
+                                                sm: "80%",
+                                                md: "70%",
+                                            },
+                                            my: 1,
+                                        }}
+                                    />
+                                    <TextField
+                                        onBlur={handleChange}
+                                        required
+                                        name="address"
+                                        label="Address"
+                                        variant="standard"
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <Description></Description>
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        sx={{
+                                            width: {
+                                                xs: "90%",
+                                                sm: "80%",
+                                                md: "70%",
+                                            },
+                                            my: 1,
+                                        }}
+                                    />
+                                    <TextField
+                                        onBlur={handleChange}
+                                        required
+                                        name="phone"
+                                        label="Phone"
+                                        variant="standard"
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <Phone></Phone>
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        sx={{
+                                            width: {
+                                                xs: "90%",
+                                                sm: "80%",
+                                                md: "70%",
+                                            },
+                                            my: 1,
+                                        }}
+                                    />
+                                    <br />
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        sx={{ my: 2 }}
+                                    >
+                                        Place Order
+                                    </Button>
+                                </form>
+                            </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
-            <Footer />
-        </Box>
+                </Container>
+                <Footer />
+            </Box>
+        </Page>
     );
 };
 

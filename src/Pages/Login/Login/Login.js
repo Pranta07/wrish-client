@@ -21,6 +21,7 @@ import {
     VisibilityOff,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Page from "../../Page/Page";
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
@@ -56,133 +57,139 @@ const Login = () => {
     };
 
     return (
-        <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 4, md: 12 }}
-        >
-            <Grid item xs={4} sm={2} md={6}>
-                <div>
-                    <img
-                        src="https://i.ibb.co/wwRxhYm/Mobile-login-pana.png"
-                        alt=""
-                        width="100%"
-                    />
-                </div>
-            </Grid>
+        <Page title="Login">
             <Grid
-                item
-                xs={4}
-                sm={2}
-                md={6}
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
+                container
+                spacing={{ xs: 2, md: 3 }}
+                columns={{ xs: 4, sm: 4, md: 12 }}
             >
-                <Box
+                <Grid item xs={4} sm={2} md={6}>
+                    <div>
+                        <img
+                            src="https://i.ibb.co/wwRxhYm/Mobile-login-pana.png"
+                            alt=""
+                            width="100%"
+                        />
+                    </div>
+                </Grid>
+                <Grid
+                    item
+                    xs={4}
+                    sm={2}
+                    md={6}
                     sx={{
-                        border: "1px solid gray",
-                        borderRadius: "5px",
-                        padding: "10px",
-                        m: 3,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                     }}
                 >
-                    <form onSubmit={handleLoginSubmit}>
-                        <h2>Sign in</h2>
-                        <TextField
-                            required
-                            onBlur={handleChange}
-                            label="Email"
-                            name="email"
-                            variant="standard"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <MailOutline></MailOutline>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            sx={{ width: "60%", my: 1 }}
-                        />
-                        <FormControl
-                            sx={{ width: "60%", my: 1 }}
-                            variant="standard"
-                            required
-                        >
-                            <InputLabel htmlFor="standard-adornment-password">
-                                Password
-                            </InputLabel>
-                            <Input
-                                name="password"
-                                type={show ? "text" : "password"}
-                                // value={values.password}
-                                onBlur={handleChange}
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                        <Lock></Lock>
-                                    </InputAdornment>
-                                }
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={
-                                                handleMouseDownPassword
-                                            }
-                                        >
-                                            {show ? (
-                                                <Visibility />
-                                            ) : (
-                                                <VisibilityOff />
-                                            )}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
-                        </FormControl>
-                    </form>
-                    {error.length > 0 && (
-                        <Alert onClose={handleClose} severity="error">
-                            {error}!
-                        </Alert>
-                    )}
-                    <Button
-                        type="submit"
-                        onClick={handleLoginSubmit}
-                        variant="contained"
-                        sx={{ px: 5, my: 2 }}
-                    >
-                        Sign in
-                    </Button>
-                    <br />
-                    <Link to="/register" style={{ textDecoration: "none" }}>
-                        <Button variant="text" sx={{ px: 5 }}>
-                            Create An Acount
-                        </Button>
-                    </Link>
-                    <br />
                     <Box
                         sx={{
-                            letterSpacing: 2,
-                            lineHeight: "normal",
-                            fontSize: "small",
+                            border: "1px solid gray",
+                            borderRadius: "5px",
+                            padding: "10px",
+                            m: 3,
                         }}
                     >
-                        .......or Sign-up with.......
+                        <form onSubmit={handleLoginSubmit}>
+                            <h2>Sign in</h2>
+                            <TextField
+                                required
+                                onBlur={handleChange}
+                                label="Email"
+                                name="email"
+                                variant="standard"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <MailOutline></MailOutline>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                sx={{ width: "60%", my: 1 }}
+                            />
+                            <FormControl
+                                sx={{ width: "60%", my: 1 }}
+                                variant="standard"
+                                required
+                            >
+                                <InputLabel htmlFor="standard-adornment-password">
+                                    Password
+                                </InputLabel>
+                                <Input
+                                    name="password"
+                                    type={show ? "text" : "password"}
+                                    // value={values.password}
+                                    onBlur={handleChange}
+                                    startAdornment={
+                                        <InputAdornment position="start">
+                                            <Lock></Lock>
+                                        </InputAdornment>
+                                    }
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={
+                                                    handleClickShowPassword
+                                                }
+                                                onMouseDown={
+                                                    handleMouseDownPassword
+                                                }
+                                            >
+                                                {show ? (
+                                                    <Visibility />
+                                                ) : (
+                                                    <VisibilityOff />
+                                                )}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                />
+                            </FormControl>
+                        </form>
+                        {error.length > 0 && (
+                            <Alert onClose={handleClose} severity="error">
+                                {error}!
+                            </Alert>
+                        )}
+                        <Button
+                            type="submit"
+                            onClick={handleLoginSubmit}
+                            variant="contained"
+                            sx={{ px: 5, my: 2 }}
+                        >
+                            Sign in
+                        </Button>
+                        <br />
+                        <Link to="/register" style={{ textDecoration: "none" }}>
+                            <Button variant="text" sx={{ px: 5 }}>
+                                Create An Acount
+                            </Button>
+                        </Link>
+                        <br />
+                        <Box
+                            sx={{
+                                letterSpacing: 2,
+                                lineHeight: "normal",
+                                fontSize: "small",
+                            }}
+                        >
+                            .......or Sign-up with.......
+                        </Box>
+                        <Button
+                            onClick={() =>
+                                handleGoogleSignIn(location, history)
+                            }
+                            variant="text"
+                            sx={{ px: 5, my: 1 }}
+                        >
+                            <Google></Google>
+                        </Button>
                     </Box>
-                    <Button
-                        onClick={() => handleGoogleSignIn(location, history)}
-                        variant="text"
-                        sx={{ px: 5, my: 1 }}
-                    >
-                        <Google></Google>
-                    </Button>
-                </Box>
+                </Grid>
             </Grid>
-        </Grid>
+        </Page>
     );
 };
 

@@ -11,47 +11,50 @@ import { AuthProvider } from "./contexts/AuthProvider";
 import Purchase from "./Pages/Purchase/Purchase";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
     return (
-        <div className="App">
-            <AuthProvider>
-                <Router>
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
-                        <Route path="/watches">
-                            <Watches />
-                        </Route>
-                        <Route path="/about">
-                            <About />
-                        </Route>
-                        <Route path="/contact">
-                            <Contact />
-                        </Route>
-                        <PrivateRoute path="/purchase/:id">
-                            <Purchase />
-                        </PrivateRoute>
-                        <PrivateRoute path="/dashboard">
-                            <Dashboard></Dashboard>
-                        </PrivateRoute>
-                        <Route path="/login">
-                            <Login></Login>
-                        </Route>
-                        <Route path="/register">
-                            <Register></Register>
-                        </Route>
-                        <Route path="*">
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                </Router>
-            </AuthProvider>
-        </div>
+        <HelmetProvider>
+            <div className="App">
+                <AuthProvider>
+                    <Router>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                            <Route path="/home">
+                                <Home />
+                            </Route>
+                            <Route path="/watches">
+                                <Watches />
+                            </Route>
+                            <Route path="/about">
+                                <About />
+                            </Route>
+                            <Route path="/contact">
+                                <Contact />
+                            </Route>
+                            <PrivateRoute path="/purchase/:id">
+                                <Purchase />
+                            </PrivateRoute>
+                            <PrivateRoute path="/dashboard">
+                                <Dashboard></Dashboard>
+                            </PrivateRoute>
+                            <Route path="/login">
+                                <Login></Login>
+                            </Route>
+                            <Route path="/register">
+                                <Register></Register>
+                            </Route>
+                            <Route path="*">
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </Router>
+                </AuthProvider>
+            </div>
+        </HelmetProvider>
     );
 }
 

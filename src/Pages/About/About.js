@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -9,9 +9,8 @@ import FAQ from "./FAQ";
 import aboutImg from "../../assets/undraw_watch.svg";
 import Navigation from "../Shared/Navigation/Navigation";
 import Footer from "../Shared/Footer/Footer";
+import Page from "../Page/Page";
 import "./About.css";
-// import Page from "../../components/Page";
-// import FAQ from "../../components/faq/FAQ";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -31,8 +30,7 @@ const services = [
 
 const About = () => {
     return (
-        // <Page title="About us">
-        <>
+        <Page title="About Us">
             <Navigation></Navigation>
             <div
                 style={{
@@ -122,9 +120,14 @@ const About = () => {
                             </div>
                         </Item>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4}>
                         <Item>
-                            <div style={{ textAlign: "left", padding: "8px" }}>
+                            <div
+                                style={{
+                                    textAlign: "left",
+                                    padding: "8px",
+                                }}
+                            >
                                 <h1
                                     style={{
                                         letterSpacing: "2px",
@@ -174,8 +177,7 @@ const About = () => {
                 </div>
             </Container>
             <Footer></Footer>
-        </>
-        // </Page>
+        </Page>
     );
 };
 
