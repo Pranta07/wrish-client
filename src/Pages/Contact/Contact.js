@@ -13,6 +13,7 @@ import Page from "../Page/Page";
 import Footer from "../Shared/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import "./Contact.css";
+import Map from "./Map";
 
 const Contact = () => {
     return (
@@ -53,16 +54,17 @@ const Contact = () => {
                                 <span className="contact-color"> Touch</span>
                             </h1>
                             <small style={{ color: "lightgray" }}>
-                                Doctors Meet Up provides progressive, and
-                                affordable healthcare, accessible on mobile and
-                                online for everyone.
+                                We provide to you the best choiches for you. We
+                                provide oyu the best quality watches for you and
+                                your friends & family. Online payment and home
+                                delivery is also available.
                             </small>
                         </Box>
                         <Box
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                my: 2,
+                                my: 4,
                             }}
                         >
                             <EmailIcon sx={{ mr: 2, color: "#526ff3" }} />
@@ -82,7 +84,7 @@ const Contact = () => {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                my: 2,
+                                my: 4,
                             }}
                         >
                             <PhoneIcon sx={{ mr: 2, color: "#526ff3" }} />
@@ -103,7 +105,7 @@ const Contact = () => {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                my: 2,
+                                my: 4,
                             }}
                         >
                             <RoomIcon sx={{ mr: 2, color: "#526ff3" }} />
@@ -120,10 +122,17 @@ const Contact = () => {
                             </div>
                         </Box>
                         <hr
-                            style={{ marginTop: "20px", marginBottom: "10px" }}
+                            style={{ marginTop: "40px", marginBottom: "10px" }}
                         />
                         <Box sx={{ textAlign: "left" }}>
-                            <p style={{ fontWeight: "bold" }}>FOLLOW US ON</p>
+                            <p
+                                style={{
+                                    fontWeight: "bold",
+                                    marginBottom: "5px",
+                                }}
+                            >
+                                FOLLOW US ON
+                            </p>
                             <FacebookIcon
                                 className="social-icon"
                                 sx={{ fontSize: "40px" }}
@@ -144,7 +153,7 @@ const Contact = () => {
                     </Grid>
 
                     <Grid item xs={12} md={6}>
-                        {/* <MapDirection></MapDirection> */}
+                        <Map></Map>
                     </Grid>
                 </Grid>
 

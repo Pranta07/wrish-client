@@ -1,0 +1,15 @@
+#map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+}
+/* .mapboxgl-control-container {
+    position: absolute !important;
+    top: 5px !important;
+    left: 5px !important;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+    display: none !important;
+} */
