@@ -140,7 +140,8 @@ const Navigation = () => {
                                     />
                                     <Button
                                         onClick={() => handleSignOut(history)}
-                                        variant="contained"
+                                        variant="text"
+                                        sx={{ color: "white" }}
                                     >
                                         <Logout></Logout> Logout
                                     </Button>
