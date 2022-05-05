@@ -1,5 +1,5 @@
-import { Box, Container } from "@mui/material";
-import React from "react";
+import { Box, Button, Container, TextField } from "@mui/material";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
@@ -12,10 +12,51 @@ import Grid from "@mui/material/Grid";
 import Page from "../Page/Page";
 import Footer from "../Shared/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
-import "./Contact.css";
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
+import ContactImg from "../../assets/undraw_contact_us.svg";
 import Map from "./Map";
+import "./Contact.css";
+import useAuth from "../../hooks/useAuth";
 
 const Contact = () => {
+    const { user } = useAuth();
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                "service_euwrdad",
+                "template_ufnso4q",
+                form.current,
+                "user_wsFjuvxgobkwxPu52i3qs"
+            )
+            .then(
+                (result) => {
+                    // console.log(result.text);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Message Sent Successfully!",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                },
+                (error) => {
+                    // console.log(error.text);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Something Went Wrong! Please Try Again!",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                }
+            );
+
+        e.target.reset();
+    };
+
     return (
         <Page title="Contact Us">
             <Navigation></Navigation>
@@ -157,84 +198,81 @@ const Contact = () => {
                     </Grid>
                 </Grid>
 
-                {/* <div className="row d-flex align-items-center py-5 my-5">
-                    <div className="col-lg-6">
-                        <img src={ContactImg} alt="" className="w-100" />
-                    </div>
-                    <div className="col-lg-6">
-                        <form onSubmit={sendEmail}>
-                            <div className="row pt-2 mx-auto">
-                                <h4 className="fw-bold">Drop Us A Line</h4>
-                                <p className="text-secondary">
-                                    <small>
-                                        We normally respond within 24 hours.
-                                    </small>
-                                </p>
-                                <div className="col-12 col-md-10 form-group">
-                                    <label
-                                        className="all-label"
-                                        htmlFor="nameId"
-                                    >
-                                        Your Name *
-                                    </label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
+                <Box sx={{ my: 12 }}>
+                    <Grid
+                        container
+                        spacing={{ xs: 2, md: 3 }}
+                        columns={{ xs: 4, sm: 8, md: 12 }}
+                    >
+                        <Grid item xs={4} sm={8} md={6} sx={{ mb: 3 }}>
+                            <img src={ContactImg} alt="" width="100%" />
+                        </Grid>
+
+                        <Grid item xs={4} sm={8} md={6}>
+                            <Box
+                                sx={{
+                                    width: { xs: "90%", sm: "85%", md: "70%" },
+                                    mx: "auto",
+                                }}
+                            >
+                                <form ref={form} onSubmit={sendEmail}>
+                                    <TextField
+                                        required
+                                        label="Name"
+                                        fullWidth
+                                        multiline
+                                        rows={1}
                                         name="name"
-                                        id="nameId"
+                                        sx={{ marginBottom: "16px" }}
+                                        defaultValue={user.displayName}
                                     />
-                                </div>
-                                <div className="col-12 col-md-10 form-group pt-3">
-                                    <label
-                                        className="all-label"
-                                        htmlFor="emailId"
-                                    >
-                                        Your Email *
-                                    </label>
-                                    <input
-                                        className="form-control"
+                                    <TextField
+                                        required
+                                        label="Email"
                                         type="email"
-                                        id="emailId"
+                                        multiline
+                                        rows={1}
+                                        fullWidth
+                                        name="email"
+                                        sx={{ marginBottom: "16px" }}
+                                        defaultValue={user.email}
                                     />
-                                </div>
-                                <div className="col-12 col-md-10 form-group pt-3 ">
-                                    <label
-                                        className="all-label"
-                                        htmlFor="subjectId"
-                                    >
-                                        Subject
-                                    </label>
-                                    <input
-                                        className="form-control"
+                                    <TextField
+                                        required
+                                        label="Subject"
                                         type="text"
+                                        multiline
+                                        rows={2}
+                                        fullWidth
                                         name="subject"
-                                        id="subjectId"
+                                        sx={{ marginBottom: "16px" }}
                                     />
-                                </div>
-                                <div className="col-12 col-md-10 form-group pt-3 ">
-                                    <label
-                                        className="all-label"
-                                        htmlFor="messageID"
-                                    >
-                                        Your Message
-                                    </label>
-                                    <textarea
-                                        className="form-control"
+                                    <TextField
+                                        required
+                                        variant="outlined"
+                                        label="Message"
+                                        multiline
+                                        rows={4}
+                                        fullWidth
                                         name="message"
-                                        id="messageID"
-                                        cols={30}
-                                        rows={5}
-                                    ></textarea>
-                                </div>
-                                <div className="pt-3">
-                                    <Button type="submit" variant="contained">
-                                        Send Message
+                                        sx={{ marginBottom: "16px" }}
+                                    />
+                                    <Button
+                                        type="submit"
+                                        className="btn"
+                                        variant="contained"
+                                        style={{
+                                            display: "flex",
+                                            margin: "3px",
+                                        }}
+                                    >
+                                        Send
                                     </Button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div> */}
+                                </form>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Box>
             </Container>
             <Footer></Footer>
         </Page>
