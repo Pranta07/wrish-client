@@ -19,14 +19,14 @@ import {
     Dashboard,
     ContactPage,
     Description,
-    Article,
+    // Article,
 } from "@mui/icons-material";
 import useAuth from "../../../hooks/useAuth";
 
 const publicListItems = [
     { name: "Home", icon: <Home></Home>, to: "/" },
     { name: "Watches", icon: <Watch></Watch>, to: "/watches" },
-    { name: "Blogs", icon: <Article></Article>, to: "/blogs" },
+    // { name: "Blogs", icon: <Article></Article>, to: "/blogs" },
     { name: "About Us", icon: <Description></Description>, to: "/about" },
     { name: "Contact", icon: <ContactPage></ContactPage>, to: "/contact" },
 ];
