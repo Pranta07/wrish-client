@@ -17,7 +17,7 @@ const UserReviews = () => {
     };
     //fetching request for all reviews
     useEffect(() => {
-        fetch("https://frozen-inlet-30875.herokuapp.com/reviews")
+        fetch("https://wrish.up.railway.app/reviews")
             .then((res) => res.json())
             .then((data) => setReviews(data));
     }, []);

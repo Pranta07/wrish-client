@@ -21,9 +21,9 @@ const AddProduct = () => {
         formData.append("desc", product.desc);
         formData.append("img", image);
 
-        //https://frozen-inlet-30875.herokuapp.com/watches
+        //https://wrish.up.railway.app/watches
         //http://localhost:5000/watches
-        fetch("https://frozen-inlet-30875.herokuapp.com/watches", {
+        fetch("https://wrish.up.railway.app/watches", {
             method: "POST",
             // headers: {
             //     "content-type": "application/json",

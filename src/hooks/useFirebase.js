@@ -117,7 +117,7 @@ const useFirebase = () => {
 
     const saveUser = (name, email) => {
         const userData = { name, email };
-        fetch("https://frozen-inlet-30875.herokuapp.com/users", {
+        fetch("https://wrish.up.railway.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

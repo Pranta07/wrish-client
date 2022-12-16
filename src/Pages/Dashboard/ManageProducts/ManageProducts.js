@@ -30,7 +30,7 @@ const ManageProducts = () => {
     useEffect(() => {
         setIsLoading(true);
         fetch(
-            `https://frozen-inlet-30875.herokuapp.com/watches?page=${page}&&productCount=8`
+            `https://wrish.up.railway.app/watches?page=${page}&&productCount=8`
         )
             .then((res) => res.json())
             .then((data) => {
@@ -60,12 +60,9 @@ const ManageProducts = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(
-                    `https://frozen-inlet-30875.herokuapp.com/watches/${id}`,
-                    {
-                        method: "DELETE",
-                    }
-                )
+                fetch(`https://wrish.up.railway.app/watches/${id}`, {
+                    method: "DELETE",
+                })
                     .then((res) => res.json())
                     .then((result) => {
                         // console.log(result);

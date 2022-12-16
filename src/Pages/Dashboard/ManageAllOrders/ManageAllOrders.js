@@ -40,7 +40,7 @@ const ManageAllOrders = () => {
 
     const handleShipped = (id) => {
         steIsUpdate(false);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${id}`, {
+        fetch(`https://wrish.up.railway.app/orders/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -67,7 +67,7 @@ const ManageAllOrders = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${id}`, {
+                fetch(`https://wrish.up.railway.app/orders/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -89,7 +89,7 @@ const ManageAllOrders = () => {
     useEffect(() => {
         setLoading(true);
         fetch(
-            `https://frozen-inlet-30875.herokuapp.com/manage/orders?page=${page}&&rows=${rowsPerPage}`
+            `https://wrish.up.railway.app/manage/orders?page=${page}&&rows=${rowsPerPage}`
         )
             .then((res) => res.json())
             .then((data) => {

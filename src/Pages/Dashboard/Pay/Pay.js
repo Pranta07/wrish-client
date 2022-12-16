@@ -15,7 +15,7 @@ const Pay = () => {
     const [order, setOrder] = useState();
 
     useEffect(() => {
-        fetch(`https://frozen-inlet-30875.herokuapp.com/pay/${orderId}`)
+        fetch(`https://wrish.up.railway.app/pay/${orderId}`)
             .then((res) => res.json())
             .then((order) => {
                 setOrder(order);

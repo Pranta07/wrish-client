@@ -38,7 +38,7 @@ const Watches = () => {
         setWatches([]);
         setIsLoading(true);
         fetch(
-            `https://frozen-inlet-30875.herokuapp.com/watches?page=${page}&&productCount=4`
+            `https://wrish.up.railway.app/watches?page=${page}&&productCount=4`
         )
             .then((res) => res.json())
             .then((data) => {

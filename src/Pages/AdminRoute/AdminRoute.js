@@ -11,7 +11,7 @@ const AdminRoute = ({ children, ...rest }) => {
 
     React.useEffect(() => {
         setDone(false);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/users/${user.email}`)
+        fetch(`https://wrish.up.railway.app/users/${user.email}`)
             .then((res) => res.json())
             .then((user) => {
                 // console.log(user.role);

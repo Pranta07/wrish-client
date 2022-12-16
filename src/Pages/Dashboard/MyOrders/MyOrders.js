@@ -56,7 +56,7 @@ const MyOrders = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://frozen-inlet-30875.herokuapp.com/orders/${id}`, {
+                fetch(`https://wrish.up.railway.app/orders/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -77,7 +77,7 @@ const MyOrders = () => {
     useEffect(() => {
         setLoading(true);
         fetch(
-            `https://frozen-inlet-30875.herokuapp.com/orders/${user.email}?page=${page}&&rows=${rowsPerPage}`
+            `https://wrish.up.railway.app/orders/${user.email}?page=${page}&&rows=${rowsPerPage}`
         )
             .then((res) => res.json())
             .then((data) => {

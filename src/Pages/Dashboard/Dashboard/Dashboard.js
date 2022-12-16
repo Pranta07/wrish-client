@@ -59,7 +59,7 @@ function Dashboard(props) {
 
     React.useEffect(() => {
         setLoading(true);
-        fetch(`https://frozen-inlet-30875.herokuapp.com/users/${user.email}`)
+        fetch(`https://wrish.up.railway.app/users/${user.email}`)
             .then((res) => res.json())
             .then((user) => {
                 if (user.role === "admin") setAdmin(true);

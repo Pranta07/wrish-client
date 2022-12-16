@@ -16,16 +16,13 @@ const CheckoutForm = ({ order }) => {
 
     //geting client secret from server side api
     useEffect(() => {
-        fetch(
-            "https://frozen-inlet-30875.herokuapp.com/create-payment-intent",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify({ price: productPrice }),
-            }
-        )
+        fetch("https://wrish.up.railway.app/create-payment-intent", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ price: productPrice }),
+        })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [productPrice]);
@@ -87,16 +84,13 @@ const CheckoutForm = ({ order }) => {
                 id: paymentIntent.id,
                 status: paymentIntent.status,
             };
-            fetch(
-                `https://frozen-inlet-30875.herokuapp.com/pay/orders/${_id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(payment),
-                }
-            )
+            fetch(`https://wrish.up.railway.app/pay/orders/${_id}`, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(payment),
+            })
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data);

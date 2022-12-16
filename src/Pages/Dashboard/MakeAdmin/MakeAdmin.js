@@ -25,7 +25,7 @@ const MakeAdmin = () => {
         formRef.current.reset();
 
         const user = { email };
-        fetch("https://frozen-inlet-30875.herokuapp.com/users/admin", {
+        fetch("https://wrish.up.railway.app/users/admin", {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${token}`,

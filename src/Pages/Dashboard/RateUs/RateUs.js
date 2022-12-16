@@ -38,7 +38,7 @@ const RateUs = () => {
         formRef.current.reset();
 
         //send review data to server
-        fetch("https://frozen-inlet-30875.herokuapp.com/reviews", {
+        fetch("https://wrish.up.railway.app/reviews", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

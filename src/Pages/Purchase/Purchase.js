@@ -35,7 +35,7 @@ const Purchase = () => {
     const formRef = useRef();
 
     useEffect(() => {
-        fetch(`https://frozen-inlet-30875.herokuapp.com/purchase/${id}`)
+        fetch(`https://wrish.up.railway.app/purchase/${id}`)
             .then((res) => res.json())
             .then((data) => setProduct(data));
     }, [id]);
@@ -51,7 +51,7 @@ const Purchase = () => {
         formRef.current.reset();
 
         //send orderdetails data to server
-        fetch("https://frozen-inlet-30875.herokuapp.com/orders", {
+        fetch("https://wrish.up.railway.app/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -22,9 +22,7 @@ const TopProducts = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(
-            `https://frozen-inlet-30875.herokuapp.com/watches?page=1&&productCount=4`
-        )
+        fetch(`https://wrish.up.railway.app/watches?page=1&&productCount=4`)
             .then((res) => res.json())
             .then((data) => {
                 setWatches(data.products);
